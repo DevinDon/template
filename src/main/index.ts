@@ -21,10 +21,10 @@ program
     logger.info(`正在下载模板 ${template} ...`);
     await Git().clone(CONFIG.GITBASE, name);
     logger.info(`正在创建项目 ${name} ...`);
-    await Git().clone(CONFIG.GITBASE, name);
     cd(name);
-    rm('-rf', '.git');
     const git = Git(pwd());
+    await git.checkout(template);
+    rm('-rf', '.git');
     await git.init();
     await git.add('.');
     await git.commit(`init: init project ${name} with template ${template}`);
