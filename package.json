@@ -1,7 +1,7 @@
 {
-  "name": "template.commander",
+  "name": "template.cli",
   "version": "0.0.0",
-  "description": "Commander Template with TypeScript.",
+  "description": "Template Command-Line Interface.",
   "main": "dist/index.js",
   "directories": {
     "doc": "docs",
@@ -57,5 +57,5 @@
   "bugs": {
     "url": "https://github.com/DevinDon/template/issues"
   },
-  "homepage": "https://github.com/DevinDon/templatetree/commander"
+  "homepage": "https://github.com/DevinDon/template"
 }
