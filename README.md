@@ -2,10 +2,6 @@
 
 Commander Template with TypeScript.
 
-With:
-
-- TypeScript Template
-
 # [THE MIT LICENSE](https://raw.githubusercontent.com/DevinDon/license/master/THE%20MIT%20LICENSE)
 
 Copyright © 2018+ Devin Don
