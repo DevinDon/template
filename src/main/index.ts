@@ -1,17 +1,39 @@
-#!/usr/bin/env node
+// #!/usr/bin/env node
+import { logger } from '@iinfinity/logger';
 import { Command } from 'commander';
+import { cd, pwd, rm } from 'shelljs';
+import Git from 'simple-git';
+import { CONFIG } from './config';
 
-export const VERSION = '0.0.0';
 export const program = new Command();
 
 // describe this project
 program
-  .version(VERSION)
-  .description('This is a template of command project with typescript.');
+  .version(CONFIG.VERSION)
+  .description('使用模板轻松创建项目。');
+
+// command: create
+program
+  .command('create <template> <name>')
+  .alias('c')
+  .description('根据模板 <template> 创建名为 <name> 的应用。')
+  .action(async (template: string, name: string) => {
+    logger.info(`正在下载模板 ${template} ...`);
+    await Git().clone(CONFIG.GITBASE, name);
+    logger.info(`正在创建项目 ${name} ...`);
+    await Git().clone(CONFIG.GITBASE, name);
+    cd(name);
+    rm('-rf', '.git');
+    const git = Git(pwd());
+    await git.init();
+    await git.add('.');
+    await git.commit(`init: init project ${name} with template ${template}`);
+    logger.info(`项目 ${name} 创建完成`);
+  });
 
 // tips of no such command, parse argv
 program
   .on('command:*', () => {
-    console.error(`No such command, see -h.`);
+    logger.error('不可用的命令，请使用 -h 参阅帮助。');
   })
   .parse(process.argv);
