@@ -7,7 +7,7 @@ export const program = new Command();
 // describe this project
 program
   .version(VERSION)
-  .description('This is a template of command project with typescript.')
+  .description('This is a template of command project with typescript.');
 
 // tips of no such command, parse argv
 program
