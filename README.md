@@ -1,6 +1,6 @@
-# Template
+# Commander Template
 
-Template Porject.
+Commander Template with TypeScript.
 
 With:
 

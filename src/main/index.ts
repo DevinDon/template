@@ -1,11 +1,17 @@
-type Name = string;
+#!/usr/bin/env node
+import { Command } from 'commander';
 
-export function hello(name: Name): string {
-  return `Hello, ${name}!`;
-}
+export const VERSION = '0.0.0';
+export const program = new Command();
 
-export async function asyncHello(name: Name): Promise<string> {
-  return `Hello, ${name}!`;
-}
+// describe this project
+program
+  .version(VERSION)
+  .description('This is a template of command project with typescript.')
 
-process.stdout.write(hello('world'));
+// tips of no such command, parse argv
+program
+  .on('command:*', () => {
+    console.error(`No such command, see -h.`);
+  })
+  .parse(process.argv);

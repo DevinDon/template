@@ -1,3 +1,3 @@
-import { hello } from '../main';
+import { description } from '../../package.json';
 
-console.log(hello('TypeScript template'));
+console.log(description);
