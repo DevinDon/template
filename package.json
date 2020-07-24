@@ -1,6 +1,6 @@
 {
-  "name": "template.cli",
-  "version": "0.0.0",
+  "name": "@iinfinity/template",
+  "version": "0.1.0",
   "description": "Template Command-Line Interface.",
   "main": "dist/index.js",
   "bin": {
@@ -31,11 +31,13 @@
   },
   "keywords": [
     "typescript",
-    "project"
+    "template",
+    "project",
+    "create-app"
   ],
   "author": "DevinDon <I.INF@Outlook.com> (https://blog.don.red/)",
   "license": "MIT",
-  "private": true,
+  "private": false,
   "dependencies": {
     "@iinfinity/logger": "^0.3.3",
     "commander": "^6.0.0",
