@@ -2,13 +2,21 @@
 
 Template Command-Line Interface.
 
-With:
+# Usage
+
+## Create App
+
+`template create <template> <name>` or `t c <template> <name>`.
+
+# Support Template
 
 - TypeScript Template
 - Commander Template
 - Crawler Template
-- Angular Template(in process)
+- Angular + Material Template(in process)
 - Rester Template(in process)
+- Angular + Rester Template(in process)
+- React + AntD Template(in process)
 
 # [THE MIT LICENSE](https://raw.githubusercontent.com/DevinDon/license/master/THE%20MIT%20LICENSE)
 
