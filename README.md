@@ -1,6 +1,6 @@
-# Template
+# TypeScript Template
 
-Template Porject.
+TypeScript Template.
 
 With:
 

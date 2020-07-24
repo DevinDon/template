@@ -1,7 +1,7 @@
 {
-  "name": "template",
+  "name": "template.typescript",
   "version": "0.0.0",
-  "description": "TypeScript Template Porject.",
+  "description": "TypeScript Template.",
   "main": "dist/index.js",
   "directories": {
     "doc": "docs",
@@ -16,12 +16,14 @@
     "build": "tsc",
     "clean": "sh -c 'rm -rf dist out temp'",
     "debug": "node --inspect-brk -r ts-node/register src/main/index.ts",
+    "demo": "cross-env MODE=DEV node -r ts-node/register src/demo/index.ts",
     "dev": "cross-env MODE=DEV node -r ts-node/register src/main/index.ts",
     "pack": "webpack --config webpack.prod.js",
     "prepublishOnly": "npm run clean && npm run build",
     "prod": "cross-env MODE=PROD node dist",
-    "start": "npm run dev",
-    "test": "node node_modules/jasmine/bin/jasmine.js --config=src/test/jasmine.json --reporter=jasmine-console-reporter --require=ts-node/register"
+    "start": "node dist",
+    "test": "node node_modules/jasmine/bin/jasmine.js --config=src/test/jasmine.json --reporter=jasmine-console-reporter --require=ts-node/register",
+    "watch": "tsc -w"
   },
   "keywords": [
     "typescript",
@@ -51,7 +53,7 @@
     "url": "git+https://github.com/DevinDon/template.git"
   },
   "bugs": {
-    "url": "https://github.com/DevinDon/template/issues"
+    "url": "https://github.com/DevinDon/template/tree/typescript/issues"
   },
-  "homepage": "https://github.com/DevinDon/template"
+  "homepage": "https://github.com/DevinDon/template/tree/typescript"
 }
