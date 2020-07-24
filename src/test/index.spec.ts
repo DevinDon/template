@@ -1,14 +1,22 @@
-import { asyncHello, hello } from '../main';
+import { Stream } from 'stream';
+import { BingPictureCrawler } from '../main';
 
 describe('Hello, world!', () => {
 
-  it('should say `Hello, world!`', done => {
-    expect(hello('world')).toEqual('Hello, world!');
+  let crawler: BingPictureCrawler;
+
+  beforeAll(done => {
+    crawler = new BingPictureCrawler();
     done();
   });
 
-  it('should async say `Hello, world!`', async done => {
-    expectAsync(asyncHello('world')).toBeResolvedTo('Hello, world!');
+  it('should get picture url', async done => {
+    expect((await crawler.getPictureURL()).length).toBeGreaterThan(BingPictureCrawler.BASE.length);
+    done();
+  });
+
+  it('should get picture stream', async done => {
+    expect(await crawler.getPictureStream()).toBeInstanceOf(Stream);
     done();
   });
 

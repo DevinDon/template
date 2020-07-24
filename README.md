@@ -1,10 +1,6 @@
-# TypeScript Template
+# Crawler Template
 
-TypeScript Template.
-
-With:
-
-- TypeScript Template
+Crawler Template with TypeScript.
 
 # [THE MIT LICENSE](https://raw.githubusercontent.com/DevinDon/license/master/THE%20MIT%20LICENSE)
 
