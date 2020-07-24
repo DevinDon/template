@@ -1,4 +1,4 @@
-// #!/usr/bin/env node
+#!/usr/bin/env node
 import { logger } from '@iinfinity/logger';
 import { Command } from 'commander';
 import { cd, pwd, rm } from 'shelljs';
