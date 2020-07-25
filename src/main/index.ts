@@ -1,11 +1,11 @@
-type Name = string;
+import { CORSHandler, Rester } from '@rester/core';
+import { MottoView } from './motto/motto.view';
 
-export function hello(name: Name): string {
-  return `Hello, ${name}!`;
-}
-
-export async function asyncHello(name: Name): Promise<string> {
-  return `Hello, ${name}!`;
-}
-
-process.stdout.write(hello('world'));
+const rester = new Rester()
+  .configViews
+  .add(MottoView)
+  .end()
+  .configHandlers
+  .add(CORSHandler)
+  .end()
+  .listen();
