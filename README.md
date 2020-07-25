@@ -1,10 +1,65 @@
-# TypeScript Template
+# Rester Template
 
-TypeScript Template.
+Rester Template.
 
-With:
+# Rester Config
 
-- TypeScript Template
+## SQLite
+
+```json
+{
+  "database": {
+    "type": "sqlite",
+    "database": "./sqlite.db",
+    "entities": [
+      "**/*.entity.js"
+    ],
+    "logging": false,
+    "synchronize": true
+  }
+}
+```
+
+## PostgreSQL
+
+```json
+{
+  "database": {
+    "type": "mongodb",
+    "database": "dev",
+    "host": "localhost",
+    "port": "27017",
+    "logging": true,
+    "synchronize": true
+  }
+}
+```
+
+## MySQL
+
+```json
+{
+  "database": {
+    "type": "mysql",
+    "host": "localhost",
+    "port": 3306,
+    "username": "test",
+    "password": "test",
+    "database": "test",
+    "synchronize": true,
+    "logging": false,
+    "entities": [
+        "src/entity/**/*.ts"
+    ],
+    "migrations": [
+        "src/migration/**/*.ts"
+    ],
+    "subscribers": [
+        "src/subscriber/**/*.ts"
+    ]
+  }
+}
+```
 
 # [THE MIT LICENSE](https://raw.githubusercontent.com/DevinDon/license/master/THE%20MIT%20LICENSE)
 
