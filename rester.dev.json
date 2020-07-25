@@ -6,7 +6,7 @@
   },
   "database": {
     "type": "sqlite",
-    "database": "sqlite.dev.db",
+    "database": "./temp/sqlite.dev.db",
     "entities": [
       "**/*.entity.ts"
     ],
