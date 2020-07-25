@@ -1,7 +1,7 @@
 {
-  "name": "template.typescript",
+  "name": "template.rester",
   "version": "0.0.0",
-  "description": "TypeScript Template.",
+  "description": "Rester Template.",
   "main": "dist/index.js",
   "directories": {
     "doc": "docs",
@@ -32,7 +32,10 @@
   "author": "IInfinity <I.INF@Outlook.com> (https://blog.don.red/)",
   "license": "MIT",
   "private": true,
-  "dependencies": {},
+  "dependencies": {
+    "@iinfinity/logger": "^0.3.3",
+    "@rester/core": "^0.10.12"
+  },
   "devDependencies": {
     "@types/jasmine": "3.5.11",
     "@types/node": "14.0.25",
