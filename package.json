@@ -1,6 +1,6 @@
 {
   "name": "template.rester",
-  "version": "0.0.0",
+  "version": "0.10.13",
   "description": "Rester Template.",
   "main": "dist/index.js",
   "directories": {
@@ -34,7 +34,7 @@
   "private": true,
   "dependencies": {
     "@iinfinity/logger": "^0.3.3",
-    "@rester/core": "^0.10.12"
+    "@rester/core": "^0.10.14"
   },
   "devDependencies": {
     "@types/jasmine": "3.5.11",
