@@ -18,7 +18,7 @@ export class MottoView {
     const insert: Pick<Motto, 'author' | 'content' | 'date'> = {
       author: motto.author,
       content: motto.content,
-      date: Date.now()
+      date: new Date()
     };
     return this.controller.insertOne(insert);
   }

@@ -1,6 +1,7 @@
 import { Controller } from '@rester/core';
+import { getMongoRepository as repo } from 'typeorm';
+import { MottoEntity as Entity } from './motto.entity';
 import { Motto } from './motto.model';
-import { MottoEntity } from './motto.entity';
 
 // insert, delete, update, select
 // one, more
@@ -9,49 +10,48 @@ import { MottoEntity } from './motto.entity';
 export class MottoController {
 
   async insertOne(motto: Pick<Motto, 'author' | 'content' | 'date'>) {
-    const id = await MottoEntity
+    const id = await repo(Entity)
       .insert(motto)
       .then(result => result.identifiers[0]);
-    return MottoEntity.findOne(id);
+    return repo(Entity).findOne(id);
   }
 
   async deleteOneByID(id: Motto['id']) {
-    await MottoEntity.delete(id);
+    await repo(Entity).delete(id);
     return [id];
   }
 
   async updateOne(id: Motto['id'], motto: Pick<Motto, 'author' | 'content'>) {
-    await MottoEntity.update(id, motto);
-    return MottoEntity.findOne(id);
+    await repo(Entity).update(id, motto);
+    return repo(Entity).findOne(id);
   }
 
   async updateOneWithLikeByID(id: Motto['id']) {
-    await MottoEntity.createQueryBuilder()
-      .update()
-      .set({ like: () => '"like" + 1' })
-      .where('id = :id', { id })
-      .execute();
-    return MottoEntity.findOne(id, { select: ['like'] });
+    await repo(Entity).updateOne(
+      { id },
+      { $inc: { like: 1 } }
+    );
+    return repo(Entity).findOne({ id }, { select: ['like'] });
   }
 
   async selectOneByRandom() {
-    return MottoEntity.createQueryBuilder()
-      .select()
-      .orderBy('RANDOM()')
-      .take(1)
-      .getOne();
+    return repo(Entity).findOne({
+      where: {
+        $sample: { size: 1 }
+      }
+    });
   }
 
   async selectOneByID(id: Motto['id']) {
-    return MottoEntity.findOne(id);
+    return repo(Entity).findOne(id);
   }
 
   async selectMoreByRandom(length: number) {
-    return MottoEntity.createQueryBuilder()
-      .select()
-      .orderBy('RANDOM()')
-      .take(length)
-      .getMany();
+    return repo(Entity).find({
+      where: {
+        $sample: { size: length }
+      }
+    });
   }
 
 }

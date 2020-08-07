@@ -1,5 +1,9 @@
+import { ObjectID } from 'typeorm';
+
 /** 格言 */
 export interface Motto {
+
+  _id: ObjectID;
 
   /** 编号 */
   id: number;
@@ -11,7 +15,7 @@ export interface Motto {
   content: string;
 
   /** 发布日期 */
-  date: number;
+  date: Date;
 
   /** 点赞 */
   like: number;

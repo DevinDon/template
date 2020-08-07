@@ -4,13 +4,15 @@
     "port": 8080,
     "porxy": false
   },
+  "debug": true,
   "database": {
-    "type": "sqlite",
-    "database": "./temp/sqlite.dev.db",
-    "entities": [
-      "**/*.entity.ts"
-    ],
+    "type": "mongodb",
+    "url": "mongodb://username:password@host.com:27017/database",
+    "authSource": "admin",
     "logging": true,
-    "synchronize": true
+    "synchronize": true,
+    "entities": [
+      "src/main/**/*.entity.*"
+    ]
   }
 }
