@@ -10,9 +10,6 @@
     "url": "mongodb://username:password@host.com:27017/database",
     "authSource": "admin",
     "logging": false,
-    "synchronize": false,
-    "entities": [
-      "src/main/**/*.entity.*"
-    ]
+    "synchronize": false
   }
 }
