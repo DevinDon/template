@@ -6,8 +6,11 @@ Rester Template.
 
 ## MongoDB
 
+> MongoDB as default database.
+
 ```json
 {
+  "debug": true,
   "database": {
     "type": "mongodb",
     "url": "mongodb://username:password@host.com:27017/database",
