@@ -20,6 +20,16 @@
     {
       "type": "node",
       "request": "launch",
+      "name": "Lanuch: Current JS File",
+      "args": [
+        "${relativeFile}"
+      ],
+      "sourceMaps": true,
+      "protocol": "inspector"
+    },
+    {
+      "type": "node",
+      "request": "launch",
       "name": "Test: Jasmine",
       "program": "${workspaceFolder}/node_modules/jasmine/bin/jasmine.js",
       "args": [
