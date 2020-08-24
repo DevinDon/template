@@ -22,7 +22,7 @@
     "debug": "node --inspect-brk -r ts-node/register src/main/index.ts",
     "demo": "cross-env MODE=DEV node -r ts-node/register src/demo/index.ts",
     "dev": "cross-env MODE=DEV node -r ts-node/register src/main/index.ts",
-    "pack": "webpack --config webpack.prod.js",
+    "pack": "webpack --config webpack.prod.js && sed -i '1i\\#!/usr/bin/env node' bin/index.js && chmod +x bin/index.js",
     "prepublishOnly": "npm run clean && npm run build",
     "prod": "cross-env MODE=PROD node dist",
     "start": "node dist",
