@@ -1,7 +1,9 @@
 /node_modules
+/bin
 /dist
 /coverage
 /package-lock.json
 /out
 /temp
 /log
+/.vscode/settings.json
