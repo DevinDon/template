@@ -59,8 +59,5 @@
   "bugs": {
     "url": "https://github.com/DevinDon/template/issues"
   },
-  "homepage": "https://github.com/DevinDon/template/tree/typescript",
-  "optionalDependencies": {
-    "sqlite3": "^5.0.0"
-  }
+  "homepage": "https://github.com/DevinDon/template/tree/typescript"
 }
