@@ -11,16 +11,19 @@ Rester Template.
 ```json
 {
   "debug": true,
-  "database": {
-    "type": "mongodb",
-    "url": "mongodb://username:password@host.com:27017/database",
-    "authSource": "admin",
-    "logging": true,
-    "synchronize": true,
-    "entities": [
-      "src/main/**/*.entity.*"
-    ]
-  }
+  "databases": [
+    {
+      "name": "default",
+      "type": "mongodb",
+      "url": "mongodb://username:password@host.com:27017/database",
+      "authSource": "admin",
+      "logging": true,
+      "synchronize": true,
+      "entities": [
+        "src/main/**/*.entity.*"
+      ]
+    }
+  ]
 }
 ```
 
@@ -28,15 +31,18 @@ Rester Template.
 
 ```json
 {
-  "database": {
-    "type": "sqlite",
-    "database": "./sqlite.db",
-    "entities": [
-      "**/*.entity.js"
-    ],
-    "logging": false,
-    "synchronize": true
-  }
+  "databases": [
+    {
+      "name": "default",
+      "type": "sqlite",
+      "database": "./sqlite.db",
+      "entities": [
+        "**/*.entity.js"
+      ],
+      "logging": false,
+      "synchronize": true
+    }
+  ]
 }
 ```
 
@@ -44,14 +50,17 @@ Rester Template.
 
 ```json
 {
-  "database": {
-    "type": "mongodb",
-    "database": "dev",
-    "host": "localhost",
-    "port": "27017",
-    "logging": true,
-    "synchronize": true
-  }
+  "databases": [
+    {
+      "name": "default",
+      "type": "mongodb",
+      "database": "dev",
+      "host": "localhost",
+      "port": "27017",
+      "logging": true,
+      "synchronize": true
+    }
+  ]
 }
 ```
 
@@ -59,25 +68,28 @@ Rester Template.
 
 ```json
 {
-  "database": {
-    "type": "mysql",
-    "host": "localhost",
-    "port": 3306,
-    "username": "test",
-    "password": "test",
-    "database": "test",
-    "synchronize": true,
-    "logging": false,
-    "entities": [
+  "databases": [
+    {
+      "name": "default",
+      "type": "mysql",
+      "host": "localhost",
+      "port": 3306,
+      "username": "test",
+      "password": "test",
+      "database": "test",
+      "synchronize": true,
+      "logging": false,
+      "entities": [
         "src/entity/**/*.ts"
-    ],
-    "migrations": [
+      ],
+      "migrations": [
         "src/migration/**/*.ts"
-    ],
-    "subscribers": [
+      ],
+      "subscribers": [
         "src/subscriber/**/*.ts"
-    ]
-  }
+      ]
+    }
+  ]
 }
 ```
 

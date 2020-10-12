@@ -11,7 +11,7 @@ const rester = new Rester()
   .end();
 
 if (process.env.MODE === 'PROD') {
-  rester.configDatabase.setEntities([MottoEntity]).end();
+  rester.configDatabases.setEntities([MottoEntity]).end();
 }
 
 rester.listen();

@@ -13,9 +13,13 @@ function _externals() {
 const externals = _externals();
 
 module.exports = {
-  entry: './src/main/index.ts',
   mode: 'production',
+  entry: './src/main/index.ts',
   // devtool: 'inline-source-map',
+  output: {
+    path: path.resolve(__dirname, '../dist'),
+    filename: 'index.js'
+  },
   module: {
     rules: [
       {
@@ -26,24 +30,8 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['.ts', '.js']
+    extensions: ['.ts', '.js'],
   },
-  output: {
-    filename: 'index.js',
-    path: path.resolve(__dirname, '../dist')
-  },
-  node: {
-    console: false,
-    global: false,
-    process: false,
-    Buffer: false,
-    __filename: false,
-    __dirname: false,
-    setImmediate: false
-  },
-  target: 'node',
   externals,
-  // plugins: [
-  //   new webpack.optimize.UglifyJsPlugin()
-  // ]
+  target: 'node'
 };
