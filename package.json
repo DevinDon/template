@@ -33,7 +33,7 @@
   "private": true,
   "dependencies": {
     "@iinfinity/logger": "^0.3.4",
-    "@rester/core": "^0.12.1",
+    "@rester/core": "^0.12.3",
     "class-validator": "^0.12.2"
   },
   "devDependencies": {
