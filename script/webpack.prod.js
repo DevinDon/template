@@ -1,4 +1,6 @@
 const path = require('path');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 function _externals() {
   let manifest = require('../package.json');
@@ -14,10 +16,10 @@ const externals = _externals();
 
 module.exports = {
   mode: 'production',
-  entry: './src/main/index.ts',
+  entry: path.resolve('src/main/index.ts'),
   // devtool: 'inline-source-map',
   output: {
-    path: path.resolve(__dirname, '../dist'),
+    path: path.resolve('dist'),
     filename: 'index.js'
   },
   module: {
@@ -33,5 +35,14 @@ module.exports = {
     extensions: ['.ts', '.js'],
   },
   externals,
-  target: 'node'
+  target: 'node',
+  plugins: [
+    new CleanWebpackPlugin(),
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: 'src/main/resources', to: 'resources', noErrorOnMissing: true },
+        { from: 'rester.json' }
+      ]
+    })
+  ]
 };
