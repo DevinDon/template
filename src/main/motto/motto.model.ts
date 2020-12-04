@@ -1,9 +1,5 @@
-import { ObjectID } from 'typeorm';
-
 /** 格言 */
 export interface Motto {
-
-  _id: ObjectID;
 
   /** 编号 */
   id: number;
@@ -21,3 +17,9 @@ export interface Motto {
   like: number;
 
 }
+
+export type MottoID = Motto['id'];
+
+export type MottoParamInsert = Pick<Motto, 'author' | 'content' | 'date'>;
+
+export type MottoParamUpdate = Pick<Motto, 'author' | 'content'>;

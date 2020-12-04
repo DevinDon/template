@@ -1,7 +1,8 @@
 import { Controller } from '@rester/core';
 import { getMongoRepository as repo } from 'typeorm';
+import { Pagination } from '../interfaces';
 import { MottoEntity as Entity } from './motto.entity';
-import { Motto } from './motto.model';
+import { MottoID, MottoParamInsert, MottoParamUpdate } from './motto.model';
 
 // insert, delete, update, select
 // one, more
@@ -9,49 +10,39 @@ import { Motto } from './motto.model';
 @Controller()
 export class MottoController {
 
-  async insertOne(motto: Pick<Motto, 'author' | 'content' | 'date'>) {
+  async insertOne(motto: MottoParamInsert) {
     const id = await repo(Entity)
       .insert(motto)
       .then(result => result.identifiers[0]);
     return repo(Entity).findOne(id);
   }
 
-  async deleteOneByID(id: Motto['id']) {
+  async deleteOneByID(id: MottoID) {
     await repo(Entity).delete(id);
     return [id];
   }
 
-  async updateOne(id: Motto['id'], motto: Pick<Motto, 'author' | 'content'>) {
+  async updateOne(id: MottoID, motto: MottoParamUpdate) {
     await repo(Entity).update(id, motto);
     return repo(Entity).findOne(id);
   }
 
-  async updateOneWithLikeByID(id: Motto['id']) {
-    await repo(Entity).updateOne(
-      { id },
-      { $inc: { like: 1 } }
-    );
-    return repo(Entity).findOne({ id }, { select: ['like'] });
-  }
-
-  async selectOneByRandom() {
-    return repo(Entity).findOne({
-      where: {
-        $sample: { size: 1 }
-      }
-    });
-  }
-
-  async selectOneByID(id: Motto['id']) {
+  async selectOneByID(id: MottoID) {
     return repo(Entity).findOne(id);
   }
 
-  async selectMoreByRandom(length: number) {
-    return repo(Entity).find({
-      where: {
-        $sample: { size: length }
-      }
-    });
+  async selectMany({ skip, take }: Pagination) {
+    return repo(Entity)
+      .find({ skip, take });
+  }
+
+  async selectManyByRandom(length: number) {
+    return repo(Entity)
+      .find({
+        where: {
+          $sample: { size: length }
+        }
+      });
   }
 
 }

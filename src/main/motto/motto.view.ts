@@ -1,43 +1,36 @@
-import { DELETE, GET, Inject, PathVariable, POST, PUT, RequestBody, View } from '@rester/core';
+import { DELETE, GET, Inject, PathQuery, PathVariable, POST, PUT, RequestBody, requiredParamsInFields, View } from '@rester/core';
 import { MottoController } from './motto.controller';
-import { Motto } from './motto.model';
+import { Motto, MottoID, MottoParamInsert } from './motto.model';
 
-// add, remove, modify, find(condition), get(random)
+// create, remove, modify, take, search
 // one, more
 
-@View('motto')
+@View('mottos')
 export class MottoView {
 
   @Inject()
   private controller!: MottoController;
 
   @POST()
-  async addOne(
-    @RequestBody() motto: Motto
+  async create(
+    @RequestBody() motto: MottoParamInsert
   ) {
-    const insert: Pick<Motto, 'author' | 'content' | 'date'> = {
+    requiredParamsInFields(motto, ['author', 'content', 'date']);
+    return this.controller.insertOne({
       author: motto.author,
       content: motto.content,
       date: new Date()
-    };
-    return this.controller.insertOne(insert);
+    });
   }
 
-  @POST('{{id}}')
-  async likeOne(
-    @PathVariable('id') id: number
-  ) {
-    return this.controller.updateOneWithLikeByID(+id);
-  }
-
-  @DELETE('{{id}}')
-  async removeOne(@PathVariable('id') id: number) {
+  @DELETE(':id')
+  async remove(@PathVariable('id') id: MottoID) {
     return this.controller.deleteOneByID(+id);
   }
 
-  @PUT('{{id}}')
-  async modifyOne(
-    @PathVariable('id') id: number,
+  @PUT(':id')
+  async modify(
+    @PathVariable('id') id: MottoID,
     @RequestBody() motto: Motto
   ) {
     const update: Pick<Motto, 'author' | 'content'> = {
@@ -48,22 +41,22 @@ export class MottoView {
   }
 
   @GET()
-  async getOne() {
-    return this.controller.selectOneByRandom();
+  async takeMany(
+    @PathQuery('random') random: boolean = false,
+    @PathQuery('take') take: number = 10,
+    @PathQuery('skip') skip: number = 0
+  ) {
+    if (random) {
+      return this.controller.selectManyByRandom(+take);
+    }
+    return this.controller.selectMany({ skip: +skip, take: +take });
   }
 
-  @GET('{{id}}')
-  async getOneByID(
-    @PathVariable('id') id: number
+  @GET(':id')
+  async take(
+    @PathVariable('id') id: MottoID
   ) {
     return this.controller.selectOneByID(+id);
-  }
-
-  @GET('more/{{length}}')
-  async getMore(
-    @PathVariable('length') length: number
-  ) {
-    return this.controller.selectMoreByRandom(+length);
   }
 
 }
