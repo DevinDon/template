@@ -1,7 +1,6 @@
 import { CORSHandler, Rester } from '@rester/core';
-import { AphorismEntity } from './aphorism/aphorism.entity';
-import { AphorismView } from './aphorism/aphorism.view';
-import { LoggerHandler } from './handlers/logger.handler';
+import { AphorismEntity, AphorismView } from './aphorism';
+import { LoggerHandler } from './handlers';
 
 (async () => {
   const rester = new Rester()
