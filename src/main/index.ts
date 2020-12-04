@@ -8,11 +8,13 @@ import { LoggerHandler } from './handlers';
     .add(AphorismView)
     .end()
     .configHandlers
-    .add(CORSHandler, LoggerHandler)
+    .add(CORSHandler)
     .end();
 
   if (process.env.MODE === 'PROD') {
     rester.configDatabases.setEntities([AphorismEntity]).end();
+  } else {
+    rester.configHandlers.add(LoggerHandler).end();
   }
 
   await rester.listen();
