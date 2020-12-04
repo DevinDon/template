@@ -1,17 +1,20 @@
 import { CORSHandler, Rester } from '@rester/core';
-import { MottoEntity } from './motto/motto.entity';
-import { MottoView } from './motto/motto.view';
+import { AphorismEntity } from './aphorism/aphorism.entity';
+import { AphorismView } from './aphorism/aphorism.view';
+import { LoggerHandler } from './handlers/logger.handler';
 
-const rester = new Rester()
-  .configViews
-  .add(MottoView)
-  .end()
-  .configHandlers
-  .add(CORSHandler)
-  .end();
+(async () => {
+  const rester = new Rester()
+    .configViews
+    .add(AphorismView)
+    .end()
+    .configHandlers
+    .add(CORSHandler, LoggerHandler)
+    .end();
 
-if (process.env.MODE === 'PROD') {
-  rester.configDatabases.setEntities([MottoEntity]).end();
-}
+  if (process.env.MODE === 'PROD') {
+    rester.configDatabases.setEntities([AphorismEntity]).end();
+  }
 
-rester.listen();
+  await rester.listen();
+})();

@@ -36,7 +36,7 @@
   "private": true,
   "dependencies": {
     "@iinfinity/logger": "^0.3.4",
-    "@rester/core": "^0.12.3",
+    "@rester/core": "^0.12.9",
     "class-validator": "^0.12.2"
   },
   "devDependencies": {
@@ -53,7 +53,7 @@
     "ts-loader": "8.0.11",
     "ts-node": "9.1.0",
     "typescript": "4.1.2",
-    "webpack": "5.9.0",
+    "webpack": "5.10.0",
     "webpack-cli": "4.2.0"
   },
   "repository": {

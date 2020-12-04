@@ -1,17 +1,19 @@
 import { BaseEntity, Column, Entity, ObjectID, ObjectIdColumn } from 'typeorm';
-import { Motto } from './motto.model';
+import { Aphorism } from './aphorism.model';
+import { Index } from 'typeorm';
 
-@Entity('motto')
-export class MottoEntity extends BaseEntity implements Motto {
+@Entity('aphorism')
+export class AphorismEntity extends BaseEntity implements Aphorism {
 
   @ObjectIdColumn()
   _id!: ObjectID;
 
-  @Column()
+  @Column({ unique: true })
   id!: number;
 
-  @Column({ nullable: true })
-  author?: string;
+  @Column()
+  @Index()
+  author!: string;
 
   @Column()
   content!: string;

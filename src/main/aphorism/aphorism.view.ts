@@ -1,41 +1,41 @@
 import { DELETE, GET, Inject, PathQuery, PathVariable, POST, PUT, RequestBody, requiredParamsInFields, View } from '@rester/core';
-import { MottoController } from './motto.controller';
-import { Motto, MottoID, MottoParamInsert } from './motto.model';
+import { AphorismController } from './aphorism.controller';
+import { Aphorism, AphorismID, AphorismParamInsert } from './aphorism.model';
 
 // create, remove, modify, take, search
 // one, more
 
-@View('mottos')
-export class MottoView {
+@View('aphorisms')
+export class AphorismView {
 
   @Inject()
-  private controller!: MottoController;
+  private controller!: AphorismController;
 
   @POST()
   async create(
-    @RequestBody() motto: MottoParamInsert
+    @RequestBody() aphorism: AphorismParamInsert
   ) {
-    requiredParamsInFields(motto, ['author', 'content', 'date']);
+    requiredParamsInFields(aphorism, ['author', 'content']);
     return this.controller.insertOne({
-      author: motto.author,
-      content: motto.content,
+      author: aphorism.author,
+      content: aphorism.content,
       date: new Date()
     });
   }
 
   @DELETE(':id')
-  async remove(@PathVariable('id') id: MottoID) {
+  async remove(@PathVariable('id') id: AphorismID) {
     return this.controller.deleteOneByID(+id);
   }
 
   @PUT(':id')
   async modify(
-    @PathVariable('id') id: MottoID,
-    @RequestBody() motto: Motto
+    @PathVariable('id') id: AphorismID,
+    @RequestBody() aphorism: Aphorism
   ) {
-    const update: Pick<Motto, 'author' | 'content'> = {
-      author: motto.author,
-      content: motto.content
+    const update: Pick<Aphorism, 'author' | 'content'> = {
+      author: aphorism.author,
+      content: aphorism.content
     };
     return this.controller.updateOne(+id, update);
   }
@@ -54,7 +54,7 @@ export class MottoView {
 
   @GET(':id')
   async take(
-    @PathVariable('id') id: MottoID
+    @PathVariable('id') id: AphorismID
   ) {
     return this.controller.selectOneByID(+id);
   }
