@@ -1,25 +1,13 @@
-const path = require('path');
+const { resolve } = require('path');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
-function _externals() {
-  let manifest = require('../package.json');
-  let dependencies = manifest.devDependencies;
-  let externals = {};
-  for (let p in dependencies) {
-    externals[p] = 'commonjs ' + p;
-  }
-  return externals;
-}
-
-const externals = _externals();
-
 module.exports = {
   mode: 'production',
-  entry: path.resolve('src/main/index.ts'),
+  entry: resolve('src/main/index.ts'),
   // devtool: 'inline-source-map',
   output: {
-    path: path.resolve('dist'),
+    path: resolve('dist'),
     filename: 'index.js'
   },
   module: {
@@ -32,16 +20,23 @@ module.exports = {
     ]
   },
   resolve: {
-    extensions: ['.ts', '.js'],
+    extensions: ['.js', '.ts'],
   },
-  externals,
+  externals: (() => {
+    const dependencies = require('../package.json').devDependencies;
+    const externals = {};
+    for (const dependency in dependencies) {
+      externals[dependency] = 'commonjs ' + dependency;
+    }
+    return externals;
+  })(),
   target: 'node',
   plugins: [
     new CleanWebpackPlugin(),
     new CopyWebpackPlugin({
       patterns: [
         { from: 'src/main/resources', to: 'resources', noErrorOnMissing: true },
-        { from: 'rester.json' }
+        { from: 'rester.json' },
       ]
     })
   ]
