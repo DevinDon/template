@@ -36,6 +36,7 @@ module.exports = {
     new CopyWebpackPlugin({
       patterns: [
         { from: 'src/main/resources', to: 'resources', noErrorOnMissing: true },
+        { from: 'src/main/config', to: 'config', noErrorOnMissing: true },
       ]
     })
   ]
