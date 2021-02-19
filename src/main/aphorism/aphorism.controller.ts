@@ -46,8 +46,8 @@ export class AphorismController {
     return this.document
       .find({
         where: {
-          $sample: { size: length }
-        }
+          $sample: { size: length },
+        },
       });
   }
 

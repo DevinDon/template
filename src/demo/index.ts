@@ -1,3 +1,4 @@
 import { description } from '../../package.json';
+import { logger } from '@iinfinity/logger';
 
-console.log(description);
+logger.log(description);

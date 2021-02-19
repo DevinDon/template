@@ -13,13 +13,13 @@ export class AphorismView {
 
   @POST()
   async create(
-    @RequestBody() aphorism: AphorismParamInsert
+    @RequestBody() aphorism: AphorismParamInsert,
   ) {
     requiredParamsInFields(aphorism, ['author', 'content']);
     return this.controller.insertOne({
       author: aphorism.author,
       content: aphorism.content,
-      date: new Date()
+      date: new Date(),
     });
   }
 
@@ -31,11 +31,11 @@ export class AphorismView {
   @PUT(':id')
   async modify(
     @PathVariable('id') id: AphorismID,
-    @RequestBody() aphorism: Aphorism
+    @RequestBody() aphorism: Aphorism,
   ) {
     const update: Pick<Aphorism, 'author' | 'content'> = {
       author: aphorism.author,
-      content: aphorism.content
+      content: aphorism.content,
     };
     return this.controller.updateOne(+id, update);
   }
@@ -44,7 +44,7 @@ export class AphorismView {
   async takeMany(
     @PathQuery('random') random: boolean = false,
     @PathQuery('take') take: number = 10,
-    @PathQuery('skip') skip: number = 0
+    @PathQuery('skip') skip: number = 0,
   ) {
     if (random) {
       return this.controller.selectManyByRandom(+take);
@@ -54,7 +54,7 @@ export class AphorismView {
 
   @GET(':id')
   async take(
-    @PathVariable('id') id: AphorismID
+    @PathVariable('id') id: AphorismID,
   ) {
     return this.controller.selectOneByID(+id);
   }

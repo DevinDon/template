@@ -8,16 +8,16 @@ module.exports = {
   // devtool: 'inline-source-map',
   output: {
     path: resolve('dist'),
-    filename: 'index.js'
+    filename: 'index.js',
   },
   module: {
     rules: [
       {
         test: /\.tsx?$/,
         use: 'ts-loader',
-        exclude: /node_modules/
-      }
-    ]
+        exclude: /node_modules/,
+      },
+    ],
   },
   resolve: {
     extensions: ['.js', '.ts'],
@@ -37,7 +37,7 @@ module.exports = {
       patterns: [
         { from: 'src/main/resources', to: 'resources', noErrorOnMissing: true },
         { from: 'rester.json' },
-      ]
-    })
-  ]
+      ],
+    }),
+  ],
 };
