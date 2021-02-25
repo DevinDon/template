@@ -5,7 +5,7 @@ import { Aphorism, AphorismID, AphorismParamInsert } from './aphorism.model';
 // create, remove, modify, take, search
 // one, more
 
-@View('aphorisms')
+@View('aphorism')
 export class AphorismView {
 
   @Inject()

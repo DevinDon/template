@@ -1,6 +1,6 @@
 import { Controller } from '@rester/core';
 import { getMongoRepository, MongoRepository } from 'typeorm';
-import { Pagination } from '../interfaces';
+import { Pagination } from '../common/interfaces';
 import { AphorismEntity } from './aphorism.entity';
 import { AphorismID, AphorismParamInsert, AphorismParamUpdate } from './aphorism.model';
 
