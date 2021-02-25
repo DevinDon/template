@@ -40,18 +40,6 @@ export class AphorismView {
     return this.controller.updateOne(+id, update);
   }
 
-  @GET()
-  async takeMany(
-    @PathQuery('random') random: boolean = false,
-    @PathQuery('take') take: number = 10,
-    @PathQuery('skip') skip: number = 0,
-  ) {
-    if (random) {
-      return this.controller.selectManyByRandom(+take);
-    }
-    return this.controller.selectMany({ skip: +skip, take: +take });
-  }
-
   @GET(':id')
   async take(
     @PathVariable('id') id: AphorismID,
