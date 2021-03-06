@@ -1,6 +1,6 @@
-import { BaseEntity, Column, Entity, ObjectID, ObjectIdColumn } from 'typeorm';
+import { BaseEntity, Column, Entity, Index, ObjectID, ObjectIdColumn } from '@rester/core/dist/declares/typeorm';
+import { IsDate, IsNotEmpty, Length } from '@rester/core/dist/declares/validator';
 import { Aphorism } from './aphorism.model';
-import { Index } from 'typeorm';
 
 @Entity('aphorism')
 export class AphorismEntity extends BaseEntity implements Aphorism {
@@ -8,16 +8,20 @@ export class AphorismEntity extends BaseEntity implements Aphorism {
   @ObjectIdColumn()
   _id!: ObjectID;
 
+  @IsNotEmpty()
   @Column({ unique: true })
   id!: number;
 
+  @Length(1, 255)
   @Column()
   @Index()
   author!: string;
 
+  @Length(6, 255)
   @Column()
   content!: string;
 
+  @IsDate()
   @Column()
   date!: Date;
 

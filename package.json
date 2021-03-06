@@ -1,6 +1,6 @@
 {
   "name": "template.rester",
-  "version": "0.10.18",
+  "version": "0.13.1",
   "description": "Rester Template.",
   "main": "dist/index.js",
   "directories": {
@@ -18,42 +18,40 @@
     "lint": "eslint .",
     "pack": "npm run build && npm run push",
     "push": "bash script/push.sh",
-    "prepublishOnly": "npm run clean && tsc",
     "start": "npm run start:dev",
-    "start:debug": "node --inspect-brk -r ts-node/register src/main/index.ts",
-    "start:demo": "cross-env MODE=DEV node -r ts-node/register src/demo/index.ts",
-    "start:dev": "cross-env MODE=DEV node -r ts-node/register src/main/index.ts",
+    "start:debug": "cross-env MODE=DEV node --inspect-brk -r ts-node/register src/main/main.ts",
+    "start:demo": "cross-env MODE=DEV node -r ts-node/register src/demo/main.ts",
+    "start:dev": "cross-env MODE=DEV node -r ts-node/register src/main/main.ts",
     "start:prod": "npm run build && cross-env MODE=PROD node dist",
     "test": "node node_modules/jasmine/bin/jasmine.js --config=src/test/jasmine.json --reporter=jasmine-console-reporter --require=ts-node/register",
     "watch": "tsc -w"
   },
   "keywords": [
     "typescript",
-    "project"
+    "rester",
+    "backend"
   ],
   "author": "IInfinity <I.INF@Outlook.com> (https://blog.don.red/)",
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "@iinfinity/logger": "^0.3.4",
-    "@rester/core": "^0.12.10",
-    "class-validator": "^0.13.1"
+    "@rester/core": "^0.13.1"
   },
   "devDependencies": {
     "@types/jasmine": "3.6.4",
     "@types/node": "14.14.31",
-    "@typescript-eslint/eslint-plugin": "4.15.2",
-    "@typescript-eslint/parser": "4.15.2",
+    "@typescript-eslint/eslint-plugin": "4.16.1",
+    "@typescript-eslint/parser": "4.16.1",
     "clean-webpack-plugin": "^3.0.0",
-    "copy-webpack-plugin": "^7.0.0",
+    "copy-webpack-plugin": "^8.0.0",
     "cross-env": "7.0.3",
-    "eslint": "7.20.0",
+    "eslint": "7.21.0",
     "jasmine": "3.6.4",
     "jasmine-console-reporter": "3.1.0",
     "ts-loader": "8.0.17",
     "ts-node": "9.1.1",
-    "typescript": "4.2.2",
-    "webpack": "5.24.2",
+    "typescript": "4.2.3",
+    "webpack": "5.24.3",
     "webpack-cli": "4.5.0"
   },
   "repository": {
@@ -63,5 +61,9 @@
   "bugs": {
     "url": "https://github.com/DevinDon/template/issues"
   },
-  "homepage": "https://github.com/DevinDon/template/tree/typescript"
+  "homepage": "https://github.com/DevinDon/template/tree/typescript",
+  "optionalDependencies": {
+    "mongodb": "^3.6.4",
+    "sqlite3": "^5.0.2"
+  }
 }

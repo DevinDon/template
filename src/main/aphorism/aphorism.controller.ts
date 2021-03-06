@@ -1,5 +1,5 @@
 import { Controller } from '@rester/core';
-import { getMongoRepository, MongoRepository } from 'typeorm';
+import { getMongoRepository, MongoRepository } from '@rester/core/dist/declares/typeorm';
 import { Pagination } from '../common/interfaces';
 import { AphorismEntity } from './aphorism.entity';
 import { AphorismID, AphorismParamInsert, AphorismParamUpdate } from './aphorism.model';
@@ -17,24 +17,24 @@ export class AphorismController {
   }
 
   async insertOne(aphorism: AphorismParamInsert) {
-    const id = await this.document
-      .insert(aphorism)
+    const key = await this.document
+      .insert({ id: Date.now(), ...aphorism })
       .then(result => result.identifiers[0]);
-    return this.document.findOne(id);
+    return this.document.findOne(key);
   }
 
   async deleteOneByID(id: AphorismID) {
-    await this.document.delete(id);
+    await this.document.delete({ id });
     return [id];
   }
 
   async updateOne(id: AphorismID, aphorism: AphorismParamUpdate) {
     await this.document.update(id, aphorism);
-    return this.document.findOne(id);
+    return this.document.findOne({ id });
   }
 
   async selectOneByID(id: AphorismID) {
-    return this.document.findOne(id);
+    return this.document.findOne({ id });
   }
 
   async selectMany({ skip, take }: Pagination) {
@@ -44,11 +44,8 @@ export class AphorismController {
 
   async selectManyByRandom(length: number) {
     return this.document
-      .find({
-        where: {
-          $sample: { size: length },
-        },
-      });
+      .aggregateEntity([{ $sample: { size: length } }])
+      .toArray();
   }
 
 }

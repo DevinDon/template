@@ -1,11 +1,12 @@
-import { DELETE, GET, Inject, PathQuery, PathVariable, POST, PUT, RequestBody, requiredParamsInFields, View } from '@rester/core';
+import { GET, Handler, Inject, PathQuery, View } from '@rester/core';
+import { AccessHandler } from '../common/handlers';
 import { AphorismController } from './aphorism.controller';
-import { Aphorism, AphorismID, AphorismParamInsert } from './aphorism.model';
 
 // create, remove, modify, take, search
 // one, more
 
 @View('aphorisms')
+@Handler(AccessHandler)
 export class AphorismsView {
 
   @Inject()

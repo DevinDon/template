@@ -1,1 +1,1 @@
-export * from './logger.handler';
+export * from './access.handler';
