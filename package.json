@@ -22,7 +22,7 @@
     "push": "bash script/push.sh",
     "start": "npm run start:dev",
     "start:dev": "cross-env NODE_ENV=DEV node -r ts-node/register src/main/main.ts",
-    "start:prod": "npm run build && cross-env NODE_ENV=PROD node dist",
+    "start:prod": "npm run build && cd dist && cross-env NODE_ENV=PROD node main.js",
     "test": "node node_modules/jasmine/bin/jasmine.js --config=src/test/jasmine.json --reporter=jasmine-console-reporter --require=ts-node/register",
     "watch": "tsc -w"
   },
