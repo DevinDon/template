@@ -6,7 +6,7 @@ then
   registry='docker.io'
 fi
 
-copy script/Dockerfile dist/Dockerfile
+cp script/Dockerfile dist/Dockerfile
 cd dist
 docker build -t $registry/$npm_package_name .
 docker push $registry/$npm_package_name
