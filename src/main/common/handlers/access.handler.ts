@@ -1,5 +1,5 @@
 import { BaseHandler } from '@rester/core';
-import { getRepository } from '@rester/core/dist/declares/typeorm';
+import { getRepository } from 'typeorm';
 import { AccessEntity } from '../../access';
 
 export class AccessHandler extends BaseHandler {

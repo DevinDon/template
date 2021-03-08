@@ -1,5 +1,5 @@
-import { BaseEntity, Column, Entity, Index, ObjectID, ObjectIdColumn } from '@rester/core/dist/declares/typeorm';
-import { IsDate, IsNotEmpty, Length } from '@rester/core/dist/declares/validator';
+import { IsDate, IsNotEmpty, Length } from 'class-validator';
+import { BaseEntity, Column, Entity, Index, ObjectID, ObjectIdColumn } from 'typeorm';
 import { Aphorism } from './aphorism.model';
 
 @Entity('aphorism')

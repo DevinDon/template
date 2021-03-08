@@ -1,5 +1,5 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from '@rester/core/dist/declares/typeorm';
-import { IsDate, IsIP, Length } from '@rester/core/dist/declares/validator';
+import { IsDate, IsIP, Length } from 'class-validator';
+import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('access')
 export class AccessEntity extends BaseEntity {

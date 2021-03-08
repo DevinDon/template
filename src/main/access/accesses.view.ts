@@ -1,5 +1,5 @@
 import { GET, PathQuery, View } from '@rester/core';
-import { getRepository } from '@rester/core/dist/declares/typeorm';
+import { getRepository } from 'typeorm';
 import { AccessEntity } from './access.entity';
 
 @View('accesses')
