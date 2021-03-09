@@ -17,7 +17,7 @@
     "clean": "bash script/clean.sh",
     "debug": "cross-env NODE_ENV=DEV node --inspect-brk -r ts-node/register src/main/main.ts",
     "demo": "cross-env NODE_ENV=DEV node -r ts-node/register src/demo/main.ts",
-    "lint": "eslint .",
+    "lint": "eslint . --fix",
     "pack": "npm run build && npm run push",
     "push": "bash script/push.sh",
     "start": "npm run start:dev",
