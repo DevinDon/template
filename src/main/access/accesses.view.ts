@@ -1,5 +1,4 @@
 import { GET, PathQuery, View } from '@rester/core';
-import { getRepository } from 'typeorm';
 import { AccessEntity } from './access.entity';
 
 @View('accesses')
@@ -10,9 +9,9 @@ export class AccessView {
     @PathQuery('take') take: number = 10,
     @PathQuery('skip') skip: number = 0,
   ) {
-    return getRepository(AccessEntity, 'local')
+    return AccessEntity
       .find({
-        order: { id: 'DESC' },
+        order: { timestamp: 'DESC' },
         take: +take,
         skip: +skip,
       });

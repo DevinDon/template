@@ -4,8 +4,7 @@ import { AphorismEntity } from './aphorism';
 
 const rester = new Rester();
 
-rester.addEntities('local', AccessEntity);
-rester.addEntities(AphorismEntity);
+rester.addEntities(AccessEntity, AphorismEntity);
 rester.addHandlers(CORSHandler);
 
 rester.bootstrap();
