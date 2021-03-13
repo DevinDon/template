@@ -1,4 +1,4 @@
-import { BaseView, GET, getPagination, Handler, Inject, PathQuery, View } from '@rester/core';
+import { BaseView, GET, getPagination, Handler, Inject, Pagination, PathQuery, View } from '@rester/core';
 import { getMongoRepository, MongoRepository } from 'typeorm';
 import { AccessHandler } from '../common/handlers';
 import { AphorismController } from './aphorism.controller';
@@ -25,9 +25,9 @@ export class AphorismsView extends BaseView {
     @PathQuery('random') random: boolean = false,
     @PathQuery('from') from: string = '000000000000000000000000',
     @PathQuery('take') take: number = 10,
-  ) {
+  ): Promise<Pagination<string>> {
     return random
-      ? this.controller.selectManyByRandom(+take)
+      ? { list: await this.controller.selectManyByRandom(take) }
       : getPagination(this.repo, { from, take });
   }
 
