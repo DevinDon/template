@@ -35,24 +35,24 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "@rester/core": "^0.13.8",
+    "@rester/core": "^0.13.9",
     "mongodb": "^3.6.4"
   },
   "devDependencies": {
     "@types/jasmine": "3.6.6",
-    "@types/node": "14.14.33",
+    "@types/node": "14.14.34",
     "@typescript-eslint/eslint-plugin": "4.17.0",
     "@typescript-eslint/parser": "4.17.0",
     "clean-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^8.0.0",
     "cross-env": "7.0.3",
-    "eslint": "7.21.0",
+    "eslint": "7.22.0",
     "jasmine": "3.6.4",
     "jasmine-console-reporter": "3.1.0",
     "ts-loader": "8.0.18",
     "ts-node": "9.1.1",
     "typescript": "4.2.3",
-    "webpack": "5.24.4",
+    "webpack": "5.25.0",
     "webpack-cli": "4.5.0"
   },
   "repository": {
