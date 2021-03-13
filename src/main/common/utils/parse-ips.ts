@@ -1,24 +1,25 @@
 import { IncomingMessage } from 'http';
 
-export const parseIPs = (input: string[] | string | undefined): string[] => {
+export const parseIPs = (...input: (string[] | string | undefined)[]): string[] => {
 
-  if (typeof input === 'undefined') {
+  const ips = input.map(item => {
+    if (Array.isArray(item)) {
+      return item;
+    }
+    if (typeof item === 'string') {
+      return item.split(',').map(ip => ip.trim());
+    }
     return [];
-  }
+  }).flat();
 
-  if (Array.isArray(input)) {
-    return input;
-  }
-
-  return input.split(',')
-    .map(ip => ip.replace(' ', ''));
+  return [...new Set(ips)];
 
 };
 
 export const parseIPsFromRequest = (request: IncomingMessage) => {
   return parseIPs(
-    request.headers['x-real-ip'] as string
-    || request.headers['x-forwarded-for'] as string
-    || request.socket.remoteAddress,
+    request.headers['x-real-ip'],
+    request.headers['x-forwarded-for'],
+    request.socket.remoteAddress,
   );
 };
