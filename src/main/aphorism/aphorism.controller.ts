@@ -17,23 +17,23 @@ export class AphorismController extends BaseController {
 
   async insertOne(aphorism: AphorismParamInsert) {
     const key = await this.document
-      .insert({ id: Date.now(), ...aphorism })
+      .insert(aphorism)
       .then(result => result.identifiers[0]);
     return this.document.findOne(key);
   }
 
-  async deleteOneByID(id: AphorismID) {
-    await this.document.delete({ id });
-    return [id];
+  async deleteOneByID(_id: AphorismID) {
+    await this.document.delete({ _id });
+    return [_id];
   }
 
-  async updateOne(id: AphorismID, aphorism: AphorismParamUpdate) {
-    await this.document.update(id, aphorism);
-    return this.document.findOne({ id });
+  async updateOne(_id: AphorismID, aphorism: AphorismParamUpdate) {
+    await this.document.update(_id, aphorism);
+    return this.document.findOne(_id);
   }
 
-  async selectOneByID(id: AphorismID) {
-    return this.document.findOne({ id });
+  async selectOneByID(_id: AphorismID) {
+    return this.document.findOne(_id);
   }
 
   async selectManyByRandom(length: number) {

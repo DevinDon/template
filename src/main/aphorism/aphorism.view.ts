@@ -27,7 +27,7 @@ export class AphorismView extends BaseView {
 
   @DELETE(':id')
   async remove(@PathVariable('id') id: AphorismID) {
-    return this.controller.deleteOneByID(+id);
+    return this.controller.deleteOneByID(id);
   }
 
   @PUT(':id')
@@ -39,14 +39,14 @@ export class AphorismView extends BaseView {
       author: aphorism.author,
       content: aphorism.content,
     };
-    return this.controller.updateOne(+id, update);
+    return this.controller.updateOne(id, update);
   }
 
   @GET(':id')
   async take(
     @PathVariable('id') id: AphorismID,
   ) {
-    return this.controller.selectOneByID(+id);
+    return this.controller.selectOneByID(id);
   }
 
 }

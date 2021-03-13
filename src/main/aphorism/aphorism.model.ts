@@ -1,9 +1,6 @@
 /** 格言 */
 export interface Aphorism {
 
-  /** 编号 */
-  id: number;
-
   /** 作者 */
   author: string;
 
@@ -18,7 +15,7 @@ export interface Aphorism {
 
 }
 
-export type AphorismID = Aphorism['id'];
+export type AphorismID = string;
 
 export type AphorismParamInsert = Pick<Aphorism, 'author' | 'content' | 'date'>;
 

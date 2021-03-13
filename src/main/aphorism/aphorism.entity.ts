@@ -8,10 +8,6 @@ export class AphorismEntity extends BaseEntity implements Aphorism {
   @ObjectIdColumn()
   _id!: ObjectID;
 
-  @IsNotEmpty()
-  @Column({ unique: true })
-  id!: number;
-
   @Length(1, 255)
   @Column()
   @Index()
