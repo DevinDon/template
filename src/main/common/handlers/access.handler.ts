@@ -6,12 +6,13 @@ export class AccessHandler extends BaseHandler {
 
   async handle(next: () => Promise<any>): Promise<any> {
     const result = await next();
+
     const ips = parseIPsFromRequest(this.request);
 
     AccessEntity
       .insert({
         method: this.request.method?.toUpperCase(),
-        url: this.request.url,
+        url: this.mapping?.path ?? this.request.url,
         params: JSON.stringify(this.mapping?.queryObject),
         timestamp: new Date(),
         ips,
