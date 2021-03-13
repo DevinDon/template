@@ -36,11 +36,12 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "@rester/core": "^0.13.9",
+    "@rester/core": "^0.13.11",
     "mongodb": "^3.6.4"
   },
   "devDependencies": {
     "@types/jasmine": "3.6.6",
+    "@types/mongodb": "^3.6.9",
     "@types/node": "14.14.34",
     "@typescript-eslint/eslint-plugin": "4.17.0",
     "@typescript-eslint/parser": "4.17.0",
