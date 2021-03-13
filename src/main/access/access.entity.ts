@@ -22,9 +22,8 @@ export class AccessEntity extends BaseEntity {
   @Column()
   timestamp!: Date;
 
-  @IsIP()
   @Column()
-  ip!: string;
+  ips!: string[];
 
   @Column()
   headers!: IncomingHttpHeaders;

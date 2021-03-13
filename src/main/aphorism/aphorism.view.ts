@@ -1,4 +1,4 @@
-import { DELETE, GET, Handler, Inject, PathVariable, POST, PUT, RequestBody, requiredParamsInFields, View } from '@rester/core';
+import { BaseView, DELETE, GET, Handler, Inject, PathVariable, POST, PUT, RequestBody, requiredParamsInFields, View } from '@rester/core';
 import { AccessHandler } from '../common/handlers';
 import { AphorismController } from './aphorism.controller';
 import { Aphorism, AphorismID, AphorismParamInsert } from './aphorism.model';
@@ -8,7 +8,7 @@ import { Aphorism, AphorismID, AphorismParamInsert } from './aphorism.model';
 
 @View('aphorism')
 @Handler(AccessHandler)
-export class AphorismView {
+export class AphorismView extends BaseView {
 
   @Inject()
   private controller!: AphorismController;

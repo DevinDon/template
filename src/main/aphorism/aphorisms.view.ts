@@ -1,27 +1,34 @@
-import { GET, Handler, Inject, PathQuery, View } from '@rester/core';
+import { BaseView, GET, getPagination, Handler, Inject, PathQuery, View } from '@rester/core';
+import { getMongoRepository, MongoRepository } from 'typeorm';
 import { AccessHandler } from '../common/handlers';
 import { AphorismController } from './aphorism.controller';
+import { AphorismEntity } from './aphorism.entity';
 
 // create, remove, modify, take, search
 // one, more
 
 @View('aphorisms')
 @Handler(AccessHandler)
-export class AphorismsView {
+export class AphorismsView extends BaseView {
 
   @Inject()
   private controller!: AphorismController;
 
+  private repo!: MongoRepository<AphorismEntity>;
+
+  async init() {
+    this.repo = getMongoRepository(AphorismEntity);
+  }
+
   @GET()
   async take(
     @PathQuery('random') random: boolean = false,
+    @PathQuery('from') from: string = '000000000000000000000000',
     @PathQuery('take') take: number = 10,
-    @PathQuery('skip') skip: number = 0,
   ) {
-    if (random) {
-      return this.controller.selectManyByRandom(+take);
-    }
-    return this.controller.selectMany({ skip: +skip, take: +take });
+    return random
+      ? this.controller.selectManyByRandom(+take)
+      : getPagination(this.repo, { from, take });
   }
 
 }

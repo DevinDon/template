@@ -1,6 +1,5 @@
-import { Controller } from '@rester/core';
+import { BaseController, Controller } from '@rester/core';
 import { getMongoRepository, MongoRepository } from 'typeorm';
-import { Pagination } from '../common/interfaces';
 import { AphorismEntity } from './aphorism.entity';
 import { AphorismID, AphorismParamInsert, AphorismParamUpdate } from './aphorism.model';
 
@@ -8,7 +7,7 @@ import { AphorismID, AphorismParamInsert, AphorismParamUpdate } from './aphorism
 // one, more
 
 @Controller()
-export class AphorismController {
+export class AphorismController extends BaseController {
 
   private document!: MongoRepository<AphorismEntity>;
 
@@ -35,11 +34,6 @@ export class AphorismController {
 
   async selectOneByID(id: AphorismID) {
     return this.document.findOne({ id });
-  }
-
-  async selectMany({ skip, take }: Pagination) {
-    return this.document
-      .find({ skip, take });
   }
 
   async selectManyByRandom(length: number) {
