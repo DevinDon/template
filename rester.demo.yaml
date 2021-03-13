@@ -6,7 +6,7 @@ addresses:
 databases:
   - name: default
     type: mongodb
-    host: database.hostname
+    host: localhost
     port: 27017
     database: database
     username: username
