@@ -12,17 +12,15 @@ export class AccessHandler extends BaseHandler {
     AccessEntity
       .insert({
         method: this.request.method?.toUpperCase(),
-        url: this.mapping?.path ?? this.request.url,
-        params: JSON.stringify(this.mapping?.queryObject),
+        path: this.mapping?.path ?? this.request.url,
+        query: JSON.stringify(this.mapping?.queryObject),
+        headers: this.request.headers,
         timestamp: new Date(),
         ips,
-        headers: this.request.headers,
         version: this.request.httpVersion,
-        response: {
-          statusCode: this.response.statusCode,
-          statusMessage: this.response.statusMessage,
-          length: result ? result.length : 0,
-        },
+        statusCode: this.response.statusCode,
+        statusMessage: this.response.statusMessage,
+        length: result ? result.length : 0,
       })
       .catch(error => this.rester.logger.warn(`Record log failed: ${error}`));
 

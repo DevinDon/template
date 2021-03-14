@@ -1,4 +1,3 @@
-import { IsDate, IsIP, Length } from 'class-validator';
 import { IncomingHttpHeaders } from 'http';
 import { BaseEntity, Column, Entity, ObjectID, ObjectIdColumn } from 'typeorm';
 
@@ -8,17 +7,18 @@ export class AccessEntity extends BaseEntity {
   @ObjectIdColumn()
   _id!: ObjectID;
 
-  @Length(3, 10)
   @Column()
   method!: string;
 
   @Column()
-  url!: string;
+  path!: string;
 
   @Column({ nullable: true })
-  params?: string;
+  query?: string;
 
-  @IsDate()
+  @Column()
+  headers!: IncomingHttpHeaders;
+
   @Column()
   timestamp!: Date;
 
@@ -26,19 +26,15 @@ export class AccessEntity extends BaseEntity {
   ips!: string[];
 
   @Column()
-  headers!: IncomingHttpHeaders;
-
-  @Column()
   version!: string;
 
   @Column()
-  request!: any;
+  statusCode!: number;
 
   @Column()
-  response!: {
-    statusCode: number;
-    statusMessage: string;
-    length: number;
-  };
+  statusMessage!: string;
+
+  @Column()
+  length!: number;
 
 }
