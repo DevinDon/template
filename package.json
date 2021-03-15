@@ -19,12 +19,12 @@
     "demo": "cross-env MODE=DEV node -r ts-node/register src/demo/main.ts",
     "init": "./scripts/init-env.sh",
     "lint": "eslint . --fix",
-    "pack": "npm run build && npm run push",
+    "pack": "npm run clean && npm run build && npm run push",
     "push": "./scripts/push.sh",
     "start": "npm run start:dev",
     "start:dev": "cross-env MODE=DEV node -r ts-node/register src/main/main.ts",
     "start:prod": "npm run build && cd dist && cross-env MODE=PROD node main.js",
-    "test": "node node_modules/jasmine/bin/jasmine.js --config=src/test/jasmine.json --reporter=jasmine-console-reporter --require=ts-node/register",
+    "test": "./scripts/test.sh",
     "watch": "tsc -w"
   },
   "keywords": [
