@@ -2,10 +2,10 @@
   "name": "@iinfinity/template",
   "version": "0.2.1",
   "description": "Template Command-Line Interface.",
-  "main": "dist/index.js",
+  "main": "bin/index.js",
   "bin": {
-    "template": "dist/index.js",
-    "t": "dist/index.js"
+    "template": "bin/index.js",
+    "t": "bin/index.js"
   },
   "directories": {
     "doc": "docs",
@@ -13,7 +13,7 @@
     "test": "src/test"
   },
   "files": [
-    "dist",
+    "bin",
     "docs"
   ],
   "scripts": {
@@ -23,8 +23,8 @@
     "demo": "cross-env MODE=DEV node -r ts-node/register src/demo/index.ts",
     "dev": "cross-env MODE=DEV node -r ts-node/register src/main/index.ts",
     "prepublishOnly": "npm run clean && npm run build",
-    "prod": "cross-env MODE=PROD node dist",
-    "start": "node dist",
+    "prod": "cross-env MODE=PROD node bin",
+    "start": "node bin",
     "test": "node node_modules/jasmine/bin/jasmine.js --config=src/test/jasmine.json --reporter=jasmine-console-reporter --require=ts-node/register"
   },
   "keywords": [
