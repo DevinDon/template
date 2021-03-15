@@ -17,9 +17,15 @@ program
   .command('create <template> <name>')
   .alias('c')
   .description('根据模板 <template> 创建名为 <name> 的应用。')
-  .action(async (template: string, name: string) => {
-    logger.info(`正在下载模板 ${template} ...`);
-    await Git().clone(CONFIG.GITBASE, name);
+  .option('-m, --mirror')
+  .action(async (template: string, name: string, { mirror }: { mirror: boolean }) => {
+    if (mirror) {
+      logger.info(`正在通过镜像下载模板 ${template} ...`);
+      await Git().clone(CONFIG.MIRROR, name);
+    } else {
+      logger.info(`正在下载模板 ${template} ...`);
+      await Git().clone(CONFIG.GITBASE, name);
+    }
     logger.info(`正在创建项目 ${name} ...`);
     cd(name);
     const git = Git(pwd());
