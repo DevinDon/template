@@ -5,7 +5,7 @@ module.exports = {
   entry: resolve('src/main/index.ts'),
   // devtool: 'inline-source-map',
   output: {
-    path: resolve('dist'),
+    path: resolve('bin'),
     filename: 'index.js',
   },
   module: {
