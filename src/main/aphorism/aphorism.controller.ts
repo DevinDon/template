@@ -1,5 +1,4 @@
-import { Logger } from '@iinfinity/logger';
-import { BaseController, Controller, Rester } from '@rester/core';
+import { BaseController, Controller } from '@rester/core';
 import { getMongoRepository, MongoRepository } from 'typeorm';
 import { AphorismEntity } from './aphorism.entity';
 import { AphorismID, AphorismParamInsert, AphorismParamUpdate } from './aphorism.model';
@@ -9,10 +8,6 @@ import { AphorismID, AphorismParamInsert, AphorismParamUpdate } from './aphorism
 
 @Controller()
 export class AphorismController extends BaseController {
-
-  protected rester!: Rester;
-
-  protected logger!: Logger;
 
   private repo!: MongoRepository<AphorismEntity>;
 

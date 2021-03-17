@@ -1,5 +1,4 @@
-import { Logger } from '@iinfinity/logger';
-import { BaseView, DELETE, GET, Handler, Inject, PathVariable, POST, PUT, RequestBody, requiredParamsInFields, Rester, View } from '@rester/core';
+import { BaseView, DELETE, GET, Handler, Inject, PathVariable, POST, PUT, RequestBody, requiredParamsInFields, View } from '@rester/core';
 import { AccessHandler } from '../common/handlers';
 import { AphorismController } from './aphorism.controller';
 import { Aphorism, AphorismID, AphorismParamInsert } from './aphorism.model';
@@ -10,10 +9,6 @@ import { Aphorism, AphorismID, AphorismParamInsert } from './aphorism.model';
 @View('aphorism')
 @Handler(AccessHandler)
 export class AphorismView extends BaseView {
-
-  protected rester!: Rester;
-
-  protected logger!: Logger;
 
   @Inject()
   private controller!: AphorismController;
