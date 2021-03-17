@@ -1,22 +1,17 @@
-/** 格言 */
 export interface Aphorism {
 
-  /** 作者 */
-  author: string;
+  author?: string;
 
-  /** 内容 */
   content: string;
 
-  /** 发布日期 */
   timestamp: Date;
 
-  /** 点赞 */
   like: number;
 
 }
 
 export type AphorismID = string;
 
-export type AphorismParamInsert = Pick<Aphorism, 'author' | 'content' | 'timestamp'>;
+export type AphorismInsertParams = Pick<Aphorism, | 'content'> & Partial<Pick<Aphorism, 'author' | 'timestamp'>>;
 
-export type AphorismParamUpdate = Pick<Aphorism, 'author' | 'content'>;
+export type AphorismUpdateParams = AphorismInsertParams;

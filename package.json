@@ -36,7 +36,7 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "@rester/core": "0.13.27",
+    "@rester/core": "0.13.29",
     "mongodb": "3.6.5"
   },
   "devDependencies": {

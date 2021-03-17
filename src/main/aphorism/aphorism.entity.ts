@@ -9,7 +9,7 @@ export class AphorismEntity extends BaseEntity implements Aphorism {
 
   @Column()
   @Index()
-  author!: string;
+  author?: string;
 
   @Column()
   content!: string;

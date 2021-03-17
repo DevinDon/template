@@ -1,13 +1,11 @@
-import { BaseView, DELETE, GET, Handler, Inject, PathVariable, POST, PUT, RequestBody, requiredParamsInFields, View } from '@rester/core';
-import { AccessHandler } from '../common/handlers';
+import { BaseView, DELETE, GET, Inject, PathVariable, POST, PUT, RequestBody, requiredParams, View } from '@rester/core';
 import { AphorismController } from './aphorism.controller';
-import { Aphorism, AphorismID, AphorismParamInsert } from './aphorism.model';
+import { AphorismID, AphorismInsertParams, AphorismUpdateParams } from './aphorism.model';
 
 // create, remove, modify, take, search
 // one, more
 
 @View('aphorism')
-@Handler(AccessHandler)
 export class AphorismView extends BaseView {
 
   @Inject()
@@ -15,14 +13,10 @@ export class AphorismView extends BaseView {
 
   @POST()
   async create(
-    @RequestBody() aphorism: AphorismParamInsert,
+    @RequestBody() { author, content, timestamp = new Date() }: AphorismInsertParams,
   ) {
-    requiredParamsInFields(aphorism, ['author', 'content']);
-    return this.controller.insertOne({
-      author: aphorism.author,
-      content: aphorism.content,
-      timestamp: new Date(),
-    });
+    requiredParams(author, content, timestamp);
+    return this.controller.insertOne({ author, content, timestamp });
   }
 
   @DELETE(':id')
@@ -33,13 +27,9 @@ export class AphorismView extends BaseView {
   @PUT(':id')
   async modify(
     @PathVariable('id') id: AphorismID,
-    @RequestBody() aphorism: Aphorism,
+    @RequestBody() { author, content, timestamp }: AphorismUpdateParams,
   ) {
-    const update: Pick<Aphorism, 'author' | 'content'> = {
-      author: aphorism.author,
-      content: aphorism.content,
-    };
-    return this.controller.updateOne(id, update);
+    return this.controller.updateOne(id, { author, content, timestamp });
   }
 
   @GET(':id')

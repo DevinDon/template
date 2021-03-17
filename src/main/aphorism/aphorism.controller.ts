@@ -1,7 +1,7 @@
 import { BaseController, Controller } from '@rester/core';
 import { getMongoRepository, MongoRepository } from 'typeorm';
 import { AphorismEntity } from './aphorism.entity';
-import { AphorismID, AphorismParamInsert, AphorismParamUpdate } from './aphorism.model';
+import { AphorismID, AphorismInsertParams, AphorismUpdateParams } from './aphorism.model';
 
 // insert, delete, update, select
 // one, more
@@ -15,7 +15,7 @@ export class AphorismController extends BaseController {
     this.repo = getMongoRepository(AphorismEntity);
   }
 
-  async insertOne(aphorism: AphorismParamInsert) {
+  async insertOne(aphorism: AphorismInsertParams) {
     const key = await this.repo
       .insert(aphorism)
       .then(result => result.identifiers[0]);
@@ -27,7 +27,7 @@ export class AphorismController extends BaseController {
     return [_id];
   }
 
-  async updateOne(_id: AphorismID, aphorism: AphorismParamUpdate) {
+  async updateOne(_id: AphorismID, aphorism: AphorismUpdateParams) {
     await this.repo.update(_id, aphorism);
     return this.repo.findOne(_id);
   }
