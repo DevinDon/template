@@ -25,6 +25,7 @@
     "prepublishOnly": "npm run clean && npm run build",
     "prod": "cross-env MODE=PROD node bin",
     "start": "node bin",
+    "lint": "eslint . --fix",
     "test": "node node_modules/jasmine/bin/jasmine.js --config=src/test/jasmine.json --reporter=jasmine-console-reporter --require=ts-node/register"
   },
   "keywords": [
@@ -40,14 +41,14 @@
     "@iinfinity/logger": "0.3.4",
     "commander": "7.1.0",
     "shelljs": "0.8.4",
-    "simple-git": "2.36.2"
+    "simple-git": "2.37.0"
   },
   "devDependencies": {
     "@types/jasmine": "3.6.6",
-    "@types/node": "14.14.34",
+    "@types/node": "14.14.35",
     "@types/shelljs": "0.8.8",
-    "@typescript-eslint/eslint-plugin": "4.17.0",
-    "@typescript-eslint/parser": "4.17.0",
+    "@typescript-eslint/eslint-plugin": "4.18.0",
+    "@typescript-eslint/parser": "4.18.0",
     "cross-env": "7.0.3",
     "eslint": "7.22.0",
     "jasmine": "3.6.4",
@@ -55,7 +56,7 @@
     "ts-loader": "8.0.18",
     "ts-node": "9.1.1",
     "typescript": "4.2.3",
-    "webpack": "5.26.0",
+    "webpack": "5.26.2",
     "webpack-cli": "4.5.0"
   },
   "repository": {
