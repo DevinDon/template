@@ -8,7 +8,7 @@ export interface Aphorism {
   content: string;
 
   /** 发布日期 */
-  date: Date;
+  timestamp: Date;
 
   /** 点赞 */
   like: number;
@@ -17,6 +17,6 @@ export interface Aphorism {
 
 export type AphorismID = string;
 
-export type AphorismParamInsert = Pick<Aphorism, 'author' | 'content' | 'date'>;
+export type AphorismParamInsert = Pick<Aphorism, 'author' | 'content' | 'timestamp'>;
 
 export type AphorismParamUpdate = Pick<Aphorism, 'author' | 'content'>;

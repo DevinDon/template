@@ -36,8 +36,8 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "@rester/core": "0.13.26",
-    "mongodb": "3.6.4"
+    "@rester/core": "0.13.27",
+    "mongodb": "3.6.5"
   },
   "devDependencies": {
     "@types/jasmine": "3.6.6",
@@ -54,7 +54,7 @@
     "ts-loader": "8.0.18",
     "ts-node": "9.1.1",
     "typescript": "4.2.3",
-    "webpack": "5.26.0",
+    "webpack": "5.26.2",
     "webpack-cli": "4.5.0"
   },
   "repository": {

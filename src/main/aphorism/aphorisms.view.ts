@@ -1,4 +1,5 @@
-import { BaseView, GET, getPagination, Handler, Inject, Pagination, PathQuery, View } from '@rester/core';
+import { Logger } from '@iinfinity/logger';
+import { BaseView, GET, getPagination, Handler, Inject, Pagination, PathQuery, Rester, View } from '@rester/core';
 import { getMongoRepository, MongoRepository } from 'typeorm';
 import { AccessHandler } from '../common/handlers';
 import { AphorismController } from './aphorism.controller';
@@ -10,6 +11,10 @@ import { AphorismEntity } from './aphorism.entity';
 @View('aphorisms')
 @Handler(AccessHandler)
 export class AphorismsView extends BaseView {
+
+  protected rester!: Rester;
+
+  protected logger!: Logger;
 
   @Inject()
   private controller!: AphorismController;

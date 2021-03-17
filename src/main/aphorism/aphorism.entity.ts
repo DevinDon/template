@@ -15,7 +15,7 @@ export class AphorismEntity extends BaseEntity implements Aphorism {
   content!: string;
 
   @Column()
-  date!: Date;
+  timestamp!: Date;
 
   @Column({ default: 0 })
   like!: number;
