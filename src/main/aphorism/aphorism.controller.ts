@@ -38,7 +38,7 @@ export class AphorismController extends BaseController {
   async selectOneByID(id: AphorismID) {
     const _id: any = new ObjectID(id);
     return this.repo.findOneOrFail({ _id })
-      .catch(() => { throw new HTTP404Exception(`Aphorism ${id} not found.`); });
+      .catch(() => { throw new HTTP404Exception('Aphorism not found.'); });
   }
 
   async selectManyByRandom(length: number) {
