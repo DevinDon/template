@@ -27,9 +27,9 @@ export class AphorismView extends BaseView {
   @PUT(':id')
   async modify(
     @PathVariable('id') id: AphorismID,
-    @RequestBody() { author, content, timestamp }: AphorismUpdateParams,
+    @RequestBody() params: AphorismUpdateParams,
   ) {
-    return this.controller.updateOne(id, { author, content, timestamp });
+    return this.controller.updateOne(id, params);
   }
 
   @GET(':id')

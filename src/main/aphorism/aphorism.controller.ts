@@ -1,4 +1,5 @@
-import { BaseController, Controller } from '@rester/core';
+import { BaseController, Controller, HTTP404Exception } from '@rester/core';
+import { ObjectID } from 'mongodb';
 import { getMongoRepository, MongoRepository } from 'typeorm';
 import { AphorismEntity } from './aphorism.entity';
 import { AphorismID, AphorismInsertParams, AphorismUpdateParams } from './aphorism.model';
@@ -22,18 +23,22 @@ export class AphorismController extends BaseController {
     return this.repo.findOne(key);
   }
 
-  async deleteOneByID(_id: AphorismID) {
-    await this.repo.delete({ _id });
-    return [_id];
+  async deleteOneByID(id: AphorismID) {
+    const _id: any = new ObjectID(id);
+    await this.repo.deleteOne({ _id });
+    return [id];
   }
 
-  async updateOne(_id: AphorismID, aphorism: AphorismUpdateParams) {
-    await this.repo.update(_id, aphorism);
-    return this.repo.findOne(_id);
+  async updateOne(id: AphorismID, aphorism: AphorismUpdateParams) {
+    const _id: any = new ObjectID(id);
+    await this.repo.updateOne({ _id }, { $set: aphorism });
+    return this.repo.findOne({ _id });
   }
 
-  async selectOneByID(_id: AphorismID) {
-    return this.repo.findOne(_id);
+  async selectOneByID(id: AphorismID) {
+    const _id: any = new ObjectID(id);
+    return this.repo.findOneOrFail({ _id })
+      .catch(() => { throw new HTTP404Exception(`Aphorism ${id} not found.`); });
   }
 
   async selectManyByRandom(length: number) {
