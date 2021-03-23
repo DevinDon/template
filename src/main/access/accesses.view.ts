@@ -1,10 +1,10 @@
 import { BaseView, GET, getPagination, Handler, PathQuery, View } from '@rester/core';
 import { getMongoRepository, MongoRepository } from 'typeorm';
-import { AuthHandler } from '../common/handlers';
+import { UserAuthHandler } from '../common/handlers';
 import { AccessEntity } from './access.entity';
 
 @View('accesses')
-@Handler(AuthHandler)
+@Handler(UserAuthHandler)
 export class AccessView extends BaseView {
 
   private repo!: MongoRepository<AccessEntity>;

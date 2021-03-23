@@ -1,2 +1,2 @@
 export * from './access.handler';
-export * from './auth.handler';
+export * from './auth/user.auth.handler';

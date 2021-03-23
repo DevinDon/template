@@ -4,14 +4,15 @@ export interface Aphorism {
 
   content: string;
 
-  timestamp: Date;
-
   like: number;
+
+  createdAt: Date;
+  updatedAt: Date;
 
 }
 
 export type AphorismID = string;
 
-export type AphorismInsertParams = Pick<Aphorism, 'content'> & Partial<Pick<Aphorism, 'author' | 'timestamp'>>;
+export type AphorismInsertParams = Pick<Aphorism, 'content'> & Partial<Pick<Aphorism, 'author'>>;
 
-export type AphorismUpdateParams = AphorismInsertParams;
+export type AphorismUpdateParams = Partial<Pick<Aphorism, 'author' | 'content'>>;

@@ -1,4 +1,4 @@
-import { BaseView, DELETE, GET, Inject, PathVariable, POST, PUT, RequestBody, requiredParams, View } from '@rester/core';
+import { BaseResponse, BaseView, cleanify, DELETE, GET, Inject, PathVariable, POST, PUT, RequestBody, requiredAtLeastOneParam, requiredParams, View } from '@rester/core';
 import { AphorismController } from './aphorism.controller';
 import { AphorismID, AphorismInsertParams, AphorismUpdateParams } from './aphorism.model';
 
@@ -13,10 +13,13 @@ export class AphorismView extends BaseView {
 
   @POST()
   async create(
-    @RequestBody() { author, content, timestamp = new Date() }: AphorismInsertParams,
+    @RequestBody() { author, content }: AphorismInsertParams,
   ) {
-    requiredParams(author, content, timestamp);
-    return this.controller.insertOne({ author, content, timestamp });
+    requiredParams(content);
+    return new BaseResponse({
+      statusCode: 201,
+      data: await this.controller.insertOne({ author, content }),
+    });
   }
 
   @DELETE(':id')
@@ -27,9 +30,10 @@ export class AphorismView extends BaseView {
   @PUT(':id')
   async modify(
     @PathVariable('id') id: AphorismID,
-    @RequestBody() params: AphorismUpdateParams,
+    @RequestBody() { author, content }: AphorismUpdateParams,
   ) {
-    return this.controller.updateOne(id, params);
+    requiredAtLeastOneParam(author, content);
+    return this.controller.updateOne(id, cleanify({ author, content }));
   }
 
   @GET(':id')

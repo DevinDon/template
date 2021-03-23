@@ -1,7 +1,6 @@
-import { BaseHandler, HTTP403Exception } from '@rester/core';
-import { parseTokenFromRequest } from '../utils';
+import { BaseHandler, HTTP403Exception, parseTokenFromRequest } from '@rester/core';
 
-export class AuthHandler extends BaseHandler {
+export class UserAuthHandler extends BaseHandler {
 
   async handle(next: () => Promise<any>): Promise<any> {
 

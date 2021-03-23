@@ -18,7 +18,11 @@ export class AphorismController extends BaseController {
 
   async insertOne(aphorism: AphorismInsertParams) {
     const key = await this.repo
-      .insert(aphorism)
+      .insert({
+        ...aphorism,
+        createdAt: new Date(),
+        updatedAt: new Date(),
+      })
       .then(result => result.identifiers[0]);
     return this.repo.findOne(key);
   }
@@ -31,7 +35,7 @@ export class AphorismController extends BaseController {
 
   async updateOne(id: AphorismID, aphorism: AphorismUpdateParams) {
     const _id: any = new ObjectID(id);
-    await this.repo.updateOne({ _id }, { $set: aphorism });
+    await this.repo.updateOne({ _id }, { $set: { ...aphorism, updatedAt: new Date() } });
     return this.repo.findOne({ _id });
   }
 

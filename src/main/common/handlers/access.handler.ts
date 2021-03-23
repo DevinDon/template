@@ -1,6 +1,5 @@
-import { BaseHandler } from '@rester/core';
+import { BaseHandler, parseIPsFromRequest } from '@rester/core';
 import { AccessEntity } from '../../access/access.entity';
-import { parseIPsFromRequest } from '../utils';
 
 export class AccessHandler extends BaseHandler {
 
