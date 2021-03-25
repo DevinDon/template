@@ -7,6 +7,7 @@ export interface Aphorism {
   like: number;
 
   createdAt: Date;
+
   updatedAt: Date;
 
 }

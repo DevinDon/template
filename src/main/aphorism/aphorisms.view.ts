@@ -1,4 +1,4 @@
-import { BaseView, GET, PathQuery, requiredAtMostOneParam, View } from '@rester/core';
+import { BaseView, GET, PathQuery, View } from '@rester/core';
 import { getEntity, Pagination } from '@rester/orm';
 import { AphorismCollection, AphorismEntity } from './aphorism.entity';
 
