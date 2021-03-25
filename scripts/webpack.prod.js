@@ -22,14 +22,18 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.ts'],
   },
-  externals: (() => {
-    const dependencies = require('../package.json').devDependencies;
-    const externals = {};
-    for (const dependency in dependencies) {
-      externals[dependency] = 'commonjs ' + dependency;
-    }
-    return externals;
-  })(),
+  externals: Object.assign(
+    {},
+    (() => {
+      const dependencies = require('../package.json').devDependencies;
+      const externals = {};
+      for (const dependency in dependencies) {
+        externals[dependency] = 'commonjs ' + dependency;
+      }
+      return externals;
+    })(),
+    { saslprep: 'require(\'saslprep\')' },
+  ),
   target: 'node',
   plugins: [
     new CleanWebpackPlugin(),
