@@ -1,40 +1,41 @@
+import { Column, Entity, MongoEntity, ObjectID } from '@rester/orm';
 import { IncomingHttpHeaders } from 'http';
-import { BaseEntity, Column, Entity, ObjectID, ObjectIdColumn } from 'typeorm';
+import { Access } from './access.model';
 
-@Entity('access')
-export class AccessEntity extends BaseEntity {
-
-  @ObjectIdColumn()
-  _id!: ObjectID;
+@Entity({ name: 'access' })
+export class AccessEntity extends MongoEntity<Access> implements Access {
 
   @Column()
-  method!: string;
+  _id: ObjectID;
 
   @Column()
-  path!: string;
+  method: string;
 
-  @Column({ nullable: true })
+  @Column()
+  path: string;
+
+  @Column()
   query?: string;
 
   @Column()
-  headers!: IncomingHttpHeaders;
+  headers: IncomingHttpHeaders;
 
   @Column()
-  timestamp!: Date;
+  timestamp: Date;
 
   @Column()
-  ips!: string[];
+  ips: string[];
 
   @Column()
-  version!: string;
+  version: string;
 
   @Column()
-  statusCode!: number;
+  statusCode: number;
 
   @Column()
-  statusMessage!: string;
+  statusMessage: string;
 
   @Column()
-  length!: number;
+  length: number;
 
 }

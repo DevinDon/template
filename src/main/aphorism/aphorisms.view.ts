@@ -1,7 +1,6 @@
-import { BaseView, GET, getPagination, Inject, Pagination, PathQuery, View } from '@rester/core';
-import { getMongoRepository, MongoRepository } from 'typeorm';
-import { AphorismController } from './aphorism.controller';
-import { AphorismEntity } from './aphorism.entity';
+import { BaseView, GET, PathQuery, requiredAtMostOneParam, View } from '@rester/core';
+import { getEntity, Pagination } from '@rester/orm';
+import { AphorismCollection, AphorismEntity } from './aphorism.entity';
 
 // create, remove, modify, take, search
 // one, more
@@ -9,13 +8,12 @@ import { AphorismEntity } from './aphorism.entity';
 @View('aphorisms')
 export class AphorismsView extends BaseView {
 
-  @Inject()
-  private controller!: AphorismController;
-
-  private repo!: MongoRepository<AphorismEntity>;
+  private entity: AphorismEntity;
+  private collection: AphorismCollection;
 
   async init() {
-    this.repo = getMongoRepository(AphorismEntity);
+    this.entity = getEntity(AphorismEntity);
+    this.collection = this.entity.collection;
   }
 
   @GET()
@@ -25,8 +23,8 @@ export class AphorismsView extends BaseView {
     @PathQuery('take') take: number = 10,
   ): Promise<Pagination<string>> {
     return random
-      ? { list: await this.controller.selectManyByRandom(take) }
-      : getPagination(this.repo, { from, take });
+      ? this.entity.getRandomList({ take })
+      : this.entity.getPagination({ from, take });
   }
 
 }

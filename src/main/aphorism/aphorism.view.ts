@@ -1,5 +1,6 @@
-import { BaseResponse, BaseView, cleanify, DELETE, GET, Inject, PathVariable, POST, PUT, RequestBody, requiredAtLeastOneParam, requiredParams, View } from '@rester/core';
-import { AphorismController } from './aphorism.controller';
+import { BaseView, cleanify, DELETE, ExistResponse, GET, PathVariable, POST, PUT, RequestBody, requiredAtLeastOneParam, requiredParams, ResterResponse, View } from '@rester/core';
+import { getEntity } from '@rester/orm';
+import { AphorismCollection, AphorismEntity } from './aphorism.entity';
 import { AphorismID, AphorismInsertParams, AphorismUpdateParams } from './aphorism.model';
 
 // create, remove, modify, take, search
@@ -8,23 +9,28 @@ import { AphorismID, AphorismInsertParams, AphorismUpdateParams } from './aphori
 @View('aphorism')
 export class AphorismView extends BaseView {
 
-  @Inject()
-  private controller!: AphorismController;
+  private entity: AphorismEntity;
+  private collection: AphorismCollection;
+
+  async init() {
+    this.entity = getEntity(AphorismEntity);
+    this.collection = this.entity.collection;
+  }
 
   @POST()
   async create(
     @RequestBody() { author, content }: AphorismInsertParams,
   ) {
     requiredParams(content);
-    return new BaseResponse({
+    return new ResterResponse({
       statusCode: 201,
-      data: await this.controller.insertOne({ author, content }),
+      data: await this.entity.insertOne({ author, content }),
     });
   }
 
   @DELETE(':id')
   async remove(@PathVariable('id') id: AphorismID) {
-    return this.controller.deleteOneByID(id);
+    return this.entity.deleteOne(id);
   }
 
   @PUT(':id')
@@ -33,14 +39,20 @@ export class AphorismView extends BaseView {
     @RequestBody() { author, content }: AphorismUpdateParams,
   ) {
     requiredAtLeastOneParam(author, content);
-    return this.controller.updateOne(id, cleanify({ author, content }));
+    return new ExistResponse({
+      data: await this.entity.updateOne(id, cleanify({ author, content })),
+      message: 'Aphorism not found.',
+    });
   }
 
   @GET(':id')
   async take(
     @PathVariable('id') id: AphorismID,
   ) {
-    return this.controller.selectOneByID(id);
+    return new ExistResponse({
+      data: await this.entity.findOne(id),
+      message: 'Aphorism not found.',
+    });
   }
 
 }

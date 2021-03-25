@@ -1,4 +1,5 @@
 import { BaseHandler, parseIPsFromRequest } from '@rester/core';
+import { getEntity } from '@rester/orm';
 import { AccessEntity } from '../../access/access.entity';
 
 export class AccessHandler extends BaseHandler {
@@ -7,7 +8,7 @@ export class AccessHandler extends BaseHandler {
     const result = await next();
 
     const access = {
-      method: this.request.method?.toUpperCase(),
+      method: this.request.method?.toUpperCase() || 'UNKNOWN',
       path: this.mapping?.path ?? this.request.url,
       query: JSON.stringify(this.mapping?.queryObject),
       headers: this.request.headers,
@@ -19,8 +20,8 @@ export class AccessHandler extends BaseHandler {
       length: result ? result.length : 0,
     };
 
-    AccessEntity
-      .insert(access)
+    (getEntity(AccessEntity) as AccessEntity).collection
+      .insertOne(access)
       .catch(error => this.rester.logger.warn(`Record log failed: ${error}`));
 
     return result;
