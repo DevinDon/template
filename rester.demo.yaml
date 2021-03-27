@@ -13,13 +13,13 @@ databases:
     password: password
     authSource: admin
     logger: debug
-    synchronize: true
+    sync: true
 
 handlerPool:
   max: 1024
 
 logger:
-  level: 0
+  level: all
   trace: true
   errorLog: error.log
   outputLog: output.log
