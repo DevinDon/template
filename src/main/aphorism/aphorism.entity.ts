@@ -26,14 +26,9 @@ export class AphorismEntity extends MongoEntity<Aphorism> implements Aphorism {
     return { list: await this.collection.aggregate([{ $sample: { size: take } }]).toArray() };
   }
 
-  async insertOne(aphorism: AphorismInsertParams) {
+  async insertOne(aphorism: Aphorism) {
     const id = await this.collection
-      .insertOne({
-        ...aphorism,
-        like: 0,
-        createdAt: new Date(),
-        updatedAt: new Date(),
-      })
+      .insertOne(aphorism)
       .then(result => result.insertedId);
     return this.collection.findOne({ _id: new ObjectID(id) });
   }
@@ -43,10 +38,10 @@ export class AphorismEntity extends MongoEntity<Aphorism> implements Aphorism {
     return [id];
   }
 
-  async updateOne(id: AphorismID, aphorism: AphorismUpdateParams) {
+  async updateOne(id: AphorismID, aphorism: Partial<Aphorism>) {
     await this.collection.updateOne(
       { _id: new ObjectID(id) },
-      { $set: { ...aphorism, updatedAt: new Date() } },
+      { $set: aphorism },
     );
     return this.collection.findOne({ _id: new ObjectID(id) });
   }
