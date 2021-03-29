@@ -1,4 +1,4 @@
-import { BaseView, cleanify, DELETE, ExistResponse, GET, PathVariable, POST, PUT, RequestBody, requiredAtLeastOneParam, requiredParams, ResterResponse, View } from '@rester/core';
+import { BaseView, cleanify, DELETE, ExistResponse, GET, PathVariable, POST, PUT, RequestBody, requiredAtLeastOneParam, requiredParams, View } from '@rester/core';
 import { getEntity } from '@rester/orm';
 import { AphorismCollection, AphorismEntity } from './aphorism.entity';
 import { AphorismID, AphorismInsertParams, AphorismUpdateParams } from './aphorism.model';
@@ -22,7 +22,7 @@ export class AphorismView extends BaseView {
     @RequestBody() { author, content }: AphorismInsertParams,
   ) {
     requiredParams(content);
-    return new ResterResponse({
+    return new ExistResponse({
       statusCode: 201,
       data: await this.entity.insertOne({
         author,
@@ -31,6 +31,7 @@ export class AphorismView extends BaseView {
         createdAt: new Date(),
         updatedAt: new Date(),
       }),
+      message: 'Aphorism created failed.',
     });
   }
 
