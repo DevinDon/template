@@ -1,5 +1,5 @@
 import { Column, Entity, MongoEntity, ObjectID, PaginationParam } from '@rester/orm';
-import { Aphorism, AphorismID, AphorismInsertParams, AphorismUpdateParams } from './aphorism.model';
+import { Aphorism, AphorismID } from './aphorism.model';
 
 @Entity({ name: 'aphorism' })
 export class AphorismEntity extends MongoEntity<Aphorism> implements Aphorism {
