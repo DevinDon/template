@@ -3,6 +3,7 @@
   "compilerOptions": {
     "strictPropertyInitialization": false,
     "outDir": "../../out/demo",
+    "isolatedModules": false,
   },
   "include": [
     "**/*",
