@@ -16,4 +16,4 @@ export type AphorismID = string;
 
 export type AphorismInsertParams = Pick<Aphorism, 'content'> & Partial<Pick<Aphorism, 'author'>>;
 
-export type AphorismUpdateParams = Partial<Pick<Aphorism, 'author' | 'content'>>;
+export type AphorismUpdateParams = Partial<AphorismInsertParams>;
