@@ -3,7 +3,8 @@
   "compilerOptions": {
     "declarationMap": true,
     "inlineSourceMap": true,
-    "outDir": "../out"
+    "inlineSources": true,
+    "outDir": "../out",
   },
   "include": [
     "**/*"
