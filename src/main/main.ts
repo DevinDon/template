@@ -1,4 +1,5 @@
 import { DEFAULT_HANDLERS, Rester } from '@rester/core';
+import 'reflect-metadata';
 import { AccessModule } from './access';
 import { AphorismModule } from './aphorism';
 import { AccessHandler } from './common/handlers';

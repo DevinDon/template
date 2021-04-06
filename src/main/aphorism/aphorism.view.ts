@@ -1,6 +1,6 @@
 import { BaseView, cleanify, DELETE, ExistResponse, GET, PathVariable, POST, PUT, RequestBody, requiredAtLeastOneParam, requiredParams, View } from '@rester/core';
 import { getEntity } from '@rester/orm';
-import { AphorismCollection, AphorismEntity } from './aphorism.entity';
+import { AphorismEntity } from './aphorism.entity';
 import { AphorismID, AphorismInsertParams, AphorismUpdateParams } from './aphorism.model';
 
 // create, remove, modify, take, search
@@ -10,11 +10,9 @@ import { AphorismID, AphorismInsertParams, AphorismUpdateParams } from './aphori
 export class AphorismView extends BaseView {
 
   private entity: AphorismEntity;
-  private collection: AphorismCollection;
 
   async init() {
     this.entity = getEntity(AphorismEntity);
-    this.collection = this.entity.collection;
   }
 
   @POST()

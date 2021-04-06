@@ -8,11 +8,9 @@ import { AccessEntity } from './access.entity';
 export class AccessView extends BaseView {
 
   private entity: AccessEntity;
-  private collection: AccessEntity['collection'];
 
   async init() {
     this.entity = getEntity(AccessEntity);
-    this.collection = this.entity.collection;
   }
 
   @GET()

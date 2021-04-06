@@ -1,6 +1,6 @@
 import { BaseView, GET, PathQuery, View } from '@rester/core';
 import { getEntity, Pagination } from '@rester/orm';
-import { AphorismCollection, AphorismEntity } from './aphorism.entity';
+import { AphorismEntity } from './aphorism.entity';
 
 // create, remove, modify, take, search
 // one, more
@@ -9,11 +9,9 @@ import { AphorismCollection, AphorismEntity } from './aphorism.entity';
 export class AphorismsView extends BaseView {
 
   private entity: AphorismEntity;
-  private collection: AphorismCollection;
 
   async init() {
     this.entity = getEntity(AphorismEntity);
-    this.collection = this.entity.collection;
   }
 
   @GET()

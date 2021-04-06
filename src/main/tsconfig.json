@@ -1,9 +1,10 @@
 {
   "extends": "../tsconfig.json",
   "compilerOptions": {
-    "outDir": "../../out/main"
+    "outDir": "../../out/main",
+    "strictPropertyInitialization": false,
   },
   "include": [
-    "**/*"
-  ]
+    "**/*",
+  ],
 }
