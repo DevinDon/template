@@ -12,7 +12,7 @@
     "downlevelIteration": true,
     "importHelpers": true,
     "incremental": true,
-    "isolatedModules": true,
+    "isolatedModules": false,
     "lib": [
       "ES5",
       "ES2015",
