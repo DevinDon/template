@@ -9,4 +9,5 @@
   "deno.suggest.completeFunctionCalls": true,
   "deno.suggest.names": true,
   "deno.suggest.paths": true,
+  "deno.config": "./tsconfig.json",
 }

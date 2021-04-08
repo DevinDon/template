@@ -1,32 +1,49 @@
 # README
 
-# Debug
+## Debug
 
 If you use VSCode, try below code to debug your project:
 
 ```json
 {
-  // Use IntelliSense to learn about possible attributes.
-  // Hover to view descriptions of existing attributes.
-  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
   "version": "0.2.0",
   "configurations": [
     {
-      "type": "node",
+      "name": "Deno: Debug Current File",
+      "type": "pwa-node",
       "request": "launch",
-      "name": "Debug: Currect File",
-      "runtimeArgs": [
-        "-r",
-        "ts-node/register"
-      ],
-      "args": [
-        "${relativeFile}"
-      ],
-      "sourceMaps": true,
       "cwd": "${workspaceFolder}",
-      "protocol": "inspector"
-    }
-  ]
+      "runtimeExecutable": "deno",
+      "runtimeArgs": [
+        "run",
+        "--inspect-brk=127.0.0.1:9229",
+        "--allow-all",
+        "${relativeFile}",
+      ],
+      "attachSimplePort": 9229,
+      "outputCapture": "std",
+      "stopOnEntry": true,
+    },
+    {
+      "name": "Deno: Debug Entrypoint",
+      "type": "pwa-node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "runtimeExecutable": "deno",
+      "runtimeArgs": [
+        "run",
+        "--inspect-brk=127.0.0.1:9229",
+        "--allow-all",
+        "${workspaceFolder}/src/main.ts",
+      ],
+      "attachSimplePort": 9229,
+      "outputCapture": "std",
+      "stopOnEntry": true,
+    },
+  ],
 }
-
 ```
+
+## Main
+
+Entrypoint is `src/main.ts`.
