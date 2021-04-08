@@ -15,14 +15,13 @@
   "scripts": {
     "build": "./scripts/build.sh",
     "clean": "./scripts/clean.sh",
-    "debug": "cross-env MODE=DEV node -r ts-node/register src/main/main.ts",
-    "demo": "cross-env MODE=DEV node -r ts-node/register src/demo/main.ts",
+    "debug": "cross-env MODE=DEV node -r ts-node/register src/main.ts",
     "init": "./scripts/init-env.sh",
     "lint": "eslint . --fix",
     "pack": "npm run clean && npm run build && npm run push",
     "push": "./scripts/push.sh",
     "start": "npm run start:dev",
-    "start:dev": "cross-env MODE=DEV node -r ts-node/register src/main/main.ts",
+    "start:dev": "cross-env MODE=DEV node -r ts-node/register src/main.ts",
     "start:prod": "npm run build && cd dist && cross-env MODE=PROD node main.js",
     "test": "./scripts/test.sh",
     "watch": "tsc -w"

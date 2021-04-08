@@ -4,7 +4,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   mode: 'production',
-  entry: resolve('src/main/main.ts'),
+  entry: resolve('src/main.ts'),
   // devtool: 'inline-source-map',
   output: {
     path: resolve('dist'),
@@ -39,7 +39,7 @@ module.exports = {
     new CleanWebpackPlugin(),
     new CopyWebpackPlugin({
       patterns: [
-        { from: 'src/main/resources', to: 'resources', noErrorOnMissing: true },
+        { from: 'src/resources', to: 'resources', noErrorOnMissing: true },
         { from: 'rester.yaml' },
       ],
     }),

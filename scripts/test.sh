@@ -2,6 +2,6 @@
 set -e
 
 node node_modules/jasmine/bin/jasmine.js \
-  --config=src/test/jasmine.json \
+  --config=jasmine.json \
   --reporter=jasmine-console-reporter \
   --require=ts-node/register
