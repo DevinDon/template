@@ -1,6 +1,6 @@
 {
   "include": [
-    "src/main/**/*",
+    "src/**/*",
   ],
   "compilerOptions": {
     "allowJs": false,

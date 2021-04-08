@@ -4,5 +4,7 @@
 /package-lock.json
 /out
 /temp
-/log
+/logs
 /yarn.lock
+/*.db
+/*.log

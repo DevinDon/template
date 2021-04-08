@@ -1,4 +1,4 @@
-import { asyncHello, hello } from '../main';
+import { asyncHello, hello } from '.';
 
 describe('Hello, world!', () => {
 
