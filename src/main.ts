@@ -1,4 +1,4 @@
-import { getLogger } from 'https://deno.land/std@0.92.0/log/mod.ts';
+import { getLogger } from 'log/mod.ts';
 
 export interface User {
   name: string;

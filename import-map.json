@@ -1,0 +1,26 @@
+{
+  "imports": {
+    "archive/": "https://deno.land/std@0.92.0/archive/",
+    "async/": "https://deno.land/std@0.92.0/async/",
+    "bytes/": "https://deno.land/std@0.92.0/bytes/",
+    "datetime/": "https://deno.land/std@0.92.0/datetime/",
+    "encoding/": "https://deno.land/std@0.92.0/encoding/",
+    "flags/": "https://deno.land/std@0.92.0/flags/",
+    "fmt/": "https://deno.land/std@0.92.0/fmt/",
+    "fs/": "https://deno.land/std@0.92.0/fs/",
+    "hash/": "https://deno.land/std@0.92.0/hash/",
+    "http/": "https://deno.land/std@0.92.0/http/",
+    "io/": "https://deno.land/std@0.92.0/io/",
+    "log/": "https://deno.land/std@0.92.0/log/",
+    "mime/": "https://deno.land/std@0.92.0/mime/",
+    "node/": "https://deno.land/std@0.92.0/node/",
+    "path/": "https://deno.land/std@0.92.0/path/",
+    "permissions/": "https://deno.land/std@0.92.0/permissions/",
+    "signal/": "https://deno.land/std@0.92.0/signal/",
+    "testing/": "https://deno.land/std@0.92.0/testing/",
+    "textproto/": "https://deno.land/std@0.92.0/textproto/",
+    "uuid/": "https://deno.land/std@0.92.0/uuid/",
+    "wasi/": "https://deno.land/std@0.92.0/wasi/",
+    "ws/": "https://deno.land/std@0.92.0/ws/"
+  }
+}
