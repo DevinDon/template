@@ -2,7 +2,7 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Deno: Debug Current File",
+      "name": "Deno: Current File",
       "type": "pwa-node",
       "request": "launch",
       "cwd": "${workspaceFolder}",
@@ -19,7 +19,24 @@
       "stopOnEntry": true,
     },
     {
-      "name": "Deno: Debug Entrypoint",
+      "name": "Deno: Current File without Break",
+      "type": "pwa-node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}",
+      "runtimeExecutable": "deno",
+      "runtimeArgs": [
+        "run",
+        "--inspect=127.0.0.1:9229",
+        "--import-map=import-map.json",
+        "--allow-all",
+        "${relativeFile}",
+      ],
+      "attachSimplePort": 9229,
+      "outputCapture": "std",
+      "stopOnEntry": true,
+    },
+    {
+      "name": "Deno: Entrypoint",
       "type": "pwa-node",
       "request": "launch",
       "cwd": "${workspaceFolder}",
