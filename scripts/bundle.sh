@@ -5,4 +5,4 @@ if [ ! -d "dist" ]; then
   mkdir dist
 fi
 
-deno bundle $@ src/main.ts dist/bundle.js
+deno bundle --import-map=import-map.json $@ src/main.ts dist/bundle.js
