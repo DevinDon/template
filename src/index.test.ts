@@ -2,14 +2,12 @@ import { asyncHello, hello } from '.';
 
 describe('Hello, world!', () => {
 
-  it('should say `Hello, world!`', done => {
+  it('should say `Hello, world!`', async () => {
     expect(hello('world')).toEqual('Hello, world!');
-    done();
   });
 
-  it('should async say `Hello, world!`', async done => {
-    expectAsync(asyncHello('world')).toBeResolvedTo('Hello, world!');
-    done();
+  it('should async say `Hello, world!`', async () => {
+    expect(await asyncHello('world')).toEqual('Hello, world!');
   });
 
 });
