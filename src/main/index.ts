@@ -34,6 +34,7 @@ program
     await git.init();
     await git.add('.');
     await git.commit(`init: init project ${name} with template ${template}`);
+    await git.branch(['-M', 'main']);
     logger.info(`项目 ${name} 创建完成`);
   });
 
