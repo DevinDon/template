@@ -1,6 +1,6 @@
 {
   "name": "@iinfinity/template",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Template Command-Line Interface.",
   "main": "bin/index.js",
   "bin": {
