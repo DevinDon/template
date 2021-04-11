@@ -34,7 +34,7 @@ If you use VSCode, try below code to debug your project:
         "run",
         "--inspect-brk=127.0.0.1:9229",
         "--allow-all",
-        "${workspaceFolder}/src/main.ts",
+        "${workspaceFolder}/sources/main.ts",
       ],
       "attachSimplePort": 9229,
       "outputCapture": "std",
@@ -46,4 +46,4 @@ If you use VSCode, try below code to debug your project:
 
 ## Main
 
-Entrypoint is `src/main.ts`.
+Entrypoint is `sources/main.ts`.

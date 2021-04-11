@@ -2,4 +2,4 @@
 set -e
 
 eslint . --fix
-deno lint --unstable src/
+deno lint --unstable sources/

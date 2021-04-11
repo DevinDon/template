@@ -46,7 +46,7 @@
         "--inspect-brk=127.0.0.1:9229",
         "--import-map=import-map.json",
         "--allow-all",
-        "${workspaceFolder}/src/main.ts",
+        "${workspaceFolder}/sources/main.ts",
       ],
       "attachSimplePort": 9229,
       "outputCapture": "std",
