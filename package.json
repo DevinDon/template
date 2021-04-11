@@ -2,7 +2,7 @@
   "name": "template.deno",
   "version": "0.1.0",
   "description": "Deno Template.",
-  "main": "dist/main.js",
+  "main": "dist/bundle.js",
   "directories": {
     "doc": "docs"
   },
@@ -18,6 +18,15 @@
   "license": "MIT",
   "private": true,
   "type": "module",
+  "scripts": {
+    "bundle": "./scripts/bundle.sh",
+    "clean": "./scripts/clean.sh",
+    "init": "./scripts/init.sh",
+    "lint": "./scripts/lint.sh",
+    "push": "./scripts/push.sh",
+    "start": "./scripts/start.sh",
+    "test": "./scripts/test.sh"
+  },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "4.21.0",
     "@typescript-eslint/parser": "4.21.0",
