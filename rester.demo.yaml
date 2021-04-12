@@ -21,5 +21,5 @@ handlerPool:
 logger:
   level: all
   trace: true
-  errorLog: error.log
-  outputLog: output.log
+  logout: logs/out.log
+  logerr: logs/err.log

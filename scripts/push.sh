@@ -1,12 +1,15 @@
 #!/usr/bin/env bash
 set -e
 
-if [ ! -n "$registry" ];
+if [ ! -n "$1" ];
 then
-  registry='docker.io'
+  echo "Error: Image name cannot be empty"
+  exit 1
+else
+  image=$1
 fi
 
 cp scripts/Dockerfile dist/Dockerfile
 cd dist
-docker build -t $registry/$npm_package_name .
-docker push $registry/$npm_package_name
+docker build -t $image .
+docker push $image

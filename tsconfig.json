@@ -5,8 +5,8 @@
   "compilerOptions": {
     "allowJs": false,
     "checkJs": false,
-    "composite": true,
-    // "rootDir": "./src",
+    "composite": false,
+    // "rootDir": "./",
     "declaration": true,
     "declarationMap": true,
     "downlevelIteration": true,
@@ -15,7 +15,7 @@
     "isolatedModules": true,
     "module": "CommonJS",
     "noEmit": false,
-    "outDir": "out",
+    "outDir": "./dist",
     "removeComments": false,
     "target": "ES2020",
     // strict mode
@@ -40,8 +40,8 @@
     // "types": [],
     // source map
     // "sourceMap": true,
-    "inlineSourceMap": false,
-    "inlineSources": false,
+    "inlineSourceMap": true,
+    "inlineSources": true,
     // "mapRoot": "",
     // "sourceRoot": "",
     // lint
@@ -49,8 +49,8 @@
     "noImplicitReturns": true,
     "noPropertyAccessFromIndexSignature": true,
     "noUncheckedIndexedAccess": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
     // experimental
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
