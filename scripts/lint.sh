@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 set -e
 
-eslint . --fix
+eslint . --fix $@

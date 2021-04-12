@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 set -e
 
-webpack --config scripts/webpack.prod.js
+webpack --config scripts/webpack.prod.js --stats-error-details $@

@@ -2,8 +2,10 @@
 set -e
 
 echo "You should start your server first."
+echo "Test will start in 3 seconds."
+sleep 3
 
-node node_modules/jasmine/bin/jasmine.js \
+jasmine \
   --config=jasmine.json \
   --reporter=jasmine-console-reporter \
   --require=ts-node/register

@@ -24,14 +24,6 @@ module.exports = {
   },
   externals: Object.assign(
     {},
-    (() => {
-      const dependencies = require('../package.json').devDependencies;
-      const externals = {};
-      for (const dependency in dependencies) {
-        externals[dependency] = 'commonjs ' + dependency;
-      }
-      return externals;
-    })(),
     { saslprep: 'require(\'saslprep\')' },
   ),
   target: 'node',
