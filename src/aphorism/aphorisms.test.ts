@@ -1,7 +1,7 @@
 import { loadResterConfig } from '@rester/core';
 import fetch from 'node-fetch';
 
-describe('Aphorism View Test', () => {
+describe('Aphorisms View Test', () => {
 
   const { addresses: [{ protocol, host, port }] } = loadResterConfig();
   const url = `${protocol}://${host}:${port}/aphorisms`;
