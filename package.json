@@ -36,11 +36,9 @@
   "dependencies": {
     "@rester/core": "0.15.11",
     "@rester/logger": "0.2.1",
-    "@rester/orm": "0.1.8",
-    "aws4": "1.11.0",
+    "@rester/orm": "0.1.9",
     "class-validator": "0.13.1",
     "mongodb": "3.6.6",
-    "mongodb-client-encryption": "1.2.3",
     "node-fetch": "2.6.1"
   },
   "devDependencies": {
