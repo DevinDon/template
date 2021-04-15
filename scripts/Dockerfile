@@ -1,7 +1,10 @@
-FROM iinfinity/node
+FROM node:14-alpine3.12
 
+WORKDIR /app
 ENV MODE=PROD
 
-COPY index.js [resources] [config] /app/
+COPY main.js /app
+COPY resources /app/resources
+COPY rester.yaml /app/rester.yaml
 
-CMD [ "bundle" ]
+ENTRYPOINT [ "node", "main.js" ]

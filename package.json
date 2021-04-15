@@ -15,14 +15,14 @@
   "scripts": {
     "build": "./scripts/build.sh",
     "clean": "./scripts/clean.sh",
-    "lint": "eslint .",
-    "pack": "npm run build && npm run push",
+    "debug": "./scripts/debug.sh",
+    "init": "./scripts/init.sh",
+    "lint": "./scripts/lint.sh",
+    "pack": "npm run clean && npm run build && npm run push",
     "push": "./scripts/push.sh",
-    "prepublishOnly": "npm run clean && tsc",
     "start": "npm run start:dev",
-    "start:debug": "node --inspect-brk -r ts-node/register src/main/index.ts",
-    "start:dev": "cross-env MODE=DEV node -r ts-node/register src/main/index.ts",
-    "start:prod": "npm run build && cross-env MODE=PROD node dist",
+    "start:dev": "MODE=DEV ./scripts/start.sh",
+    "start:prod": "MODE=PROD ./scripts/start.sh",
     "test": "./scripts/test.sh",
     "watch": "tsc -w"
   },
@@ -30,14 +30,14 @@
     "typescript",
     "project"
   ],
-  "author": "IInfinity <I.INF@Outlook.com> (https://blog.don.red/)",
+  "author": "IInfinity <i.inf@outlook.com> (https://blog.don.red/)",
   "license": "MIT",
   "private": true,
   "devDependencies": {
     "@types/jasmine": "3.6.9",
-    "@types/node": "14.14.37",
-    "@typescript-eslint/eslint-plugin": "4.21.0",
-    "@typescript-eslint/parser": "4.21.0",
+    "@types/node": "14.14.39",
+    "@typescript-eslint/eslint-plugin": "4.22.0",
+    "@typescript-eslint/parser": "4.22.0",
     "clean-webpack-plugin": "3.0.0",
     "copy-webpack-plugin": "8.1.1",
     "cross-env": "7.0.3",
@@ -47,7 +47,7 @@
     "ts-loader": "8.1.0",
     "ts-node": "9.1.1",
     "typescript": "4.2.4",
-    "webpack": "5.31.2",
+    "webpack": "5.33.2",
     "webpack-cli": "4.6.0"
   },
   "repository": {

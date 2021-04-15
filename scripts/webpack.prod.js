@@ -4,11 +4,11 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   mode: 'production',
-  entry: resolve('src/index.ts'),
+  entry: resolve('src/main.ts'),
   // devtool: 'inline-source-map',
   output: {
     path: resolve('dist'),
-    filename: 'index.js',
+    filename: 'main.js',
   },
   module: {
     rules: [
@@ -22,14 +22,6 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.ts'],
   },
-  externals: (() => {
-    const dependencies = require('../package.json').devDependencies;
-    const externals = {};
-    for (const dependency in dependencies) {
-      externals[dependency] = 'commonjs ' + dependency;
-    }
-    return externals;
-  })(),
   target: 'node',
   plugins: [
     new CleanWebpackPlugin(),
