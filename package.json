@@ -2,7 +2,7 @@
   "name": "template.typescript",
   "version": "0.0.0",
   "description": "TypeScript Template.",
-  "main": "dist/index.js",
+  "main": "dist/bundle.js",
   "directories": {
     "doc": "docs",
     "example": "src/demo",
