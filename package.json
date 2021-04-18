@@ -2,7 +2,7 @@
   "name": "template.rester",
   "version": "0.15.0",
   "description": "Rester Template.",
-  "main": "dist/main.js",
+  "main": "dist/bundle.js",
   "directories": {
     "doc": "docs",
     "example": "src/demo",
