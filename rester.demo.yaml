@@ -1,7 +1,7 @@
 addresses:
   - host: 0.0.0.0
     port: 8080
-    protocol: HTTP
+    protocol: http
 
 databases:
   - name: default
@@ -15,7 +15,7 @@ databases:
     logger: debug
     sync: true
 
-handlerPool:
+handler-pool:
   max: 1024
 
 logger:
@@ -23,3 +23,8 @@ logger:
   trace: true
   logout: logs/out.log
   logerr: logs/err.log
+
+queue:
+  host: localhost
+  port: 6379
+  password: rester-redis
