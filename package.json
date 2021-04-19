@@ -13,7 +13,9 @@
     "docs"
   ],
   "scripts": {
-    "build": "./scripts/build.sh",
+    "build": "npm run build:prod",
+    "build:dev": "MODE=DEV ./scripts/build.sh",
+    "build:prod": "MODE=PROD ./scripts/build.sh",
     "clean": "./scripts/clean.sh",
     "debug": "./scripts/debug.sh",
     "init": "./scripts/init.sh",
