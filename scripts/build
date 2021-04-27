@@ -1,7 +1,19 @@
 #!/usr/bin/env bash
 
 if [ "${MODE}" = "DEV" ]; then
-  webpack --config scripts/configs/webpack.dev.js --stats-error-details ${@}
+  esbuild \
+  src/main.ts \
+  --bundle \
+  --platform=node \
+  --target=es2020,node16 \
+  --outfile=dist/bundle.js \
+  --sourcemap=inline
 else
-  webpack --config scripts/configs/webpack.prod.js --stats-error-details ${@}
+  esbuild \
+  src/main.ts \
+  --bundle \
+  --platform=node \
+  --target=es2020,node16 \
+  --outfile=dist/bundle.js \
+  --minify
 fi
