@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+if [ "${MODE}" = "DEV" ]; then
+  webpack --config scripts/configs/webpack.dev.js --stats-error-details ${@}
+else
+  webpack --config scripts/configs/webpack.prod.js --stats-error-details ${@}
+fi

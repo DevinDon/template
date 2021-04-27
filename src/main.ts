@@ -1,11 +1,7 @@
-type Name = string;
+/* eslint-disable no-console */
+import { hello, asyncHello } from './index';
 
-export function hello(name: Name): string {
-  return `Hello, ${name}!`;
-}
+console.log(hello('TypeScript'));
 
-export async function asyncHello(name: Name): Promise<string> {
-  return `Hello, ${name}!`;
-}
-
-process.stdout.write(hello('world'));
+asyncHello('Promise')
+  .then(console.log);
