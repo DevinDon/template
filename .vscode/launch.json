@@ -44,6 +44,6 @@
       "console": "integratedTerminal",
       "internalConsoleOptions": "neverOpen",
       "outputCapture": "std",
-    }
-  ]
+    },
+  ],
 }
