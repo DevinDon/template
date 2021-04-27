@@ -5,8 +5,7 @@
   "main": "dist/bundle.js",
   "directories": {
     "doc": "docs",
-    "example": "src/demo",
-    "test": "src/test"
+    "example": "demo"
   },
   "files": [
     "dist",
@@ -14,18 +13,20 @@
   ],
   "scripts": {
     "build": "npm run build:prod",
-    "build:dev": "MODE=DEV ./scripts/build.sh",
-    "build:prod": "MODE=PROD ./scripts/build.sh",
-    "clean": "./scripts/clean.sh",
-    "debug": "./scripts/debug.sh",
-    "init": "./scripts/init.sh",
-    "lint": "./scripts/lint.sh",
+    "build:dev": "MODE=DEV ./scripts/build",
+    "build:prod": "MODE=PROD ./scripts/build",
+    "clean": "./scripts/clean",
+    "debug": "./scripts/debug",
+    "postinstall": "npm run init",
+    "init": "./scripts/init",
+    "lint": "./scripts/lint",
     "pack": "npm run clean && npm run build && npm run push",
-    "push": "./scripts/push.sh",
+    "push": "./scripts/push",
+    "service": "./scripts/service",
     "start": "npm run start:dev",
-    "start:dev": "MODE=DEV ./scripts/start.sh",
-    "start:prod": "MODE=PROD ./scripts/start.sh",
-    "test": "./scripts/test.sh"
+    "start:dev": "MODE=DEV ./scripts/start",
+    "start:prod": "MODE=PROD ./scripts/start",
+    "test": "./scripts/test"
   },
   "keywords": [
     "typescript",

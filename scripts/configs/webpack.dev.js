@@ -28,7 +28,9 @@ module.exports = {
     new CopyWebpackPlugin({
       patterns: [
         { from: 'src/resources', to: 'resources', noErrorOnMissing: true },
-        { from: 'src/config', to: 'config', noErrorOnMissing: true },
+        { from: 'src/configs', to: 'configs', noErrorOnMissing: true },
+        { from: 'rester.local.yaml', noErrorOnMissing: true },
+        { from: 'rester.yaml', noErrorOnMissing: true },
       ],
     }),
   ],

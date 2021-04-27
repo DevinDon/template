@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
-set -e
 
-if [[ $@ =~ "--all" ]];
+if [[ ${@} =~ "--all" ]];
 then
   cat .gitignore | sed "s/^\//.\//g" | xargs rm -rf
 else
