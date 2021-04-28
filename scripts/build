@@ -1,7 +1,34 @@
 #!/usr/bin/env bash
+set -e
 
+# build with tsc
+tsc --outDir out/
+
+# build with esbuild
 if [ "${MODE}" = "DEV" ]; then
-  webpack --config scripts/configs/webpack.dev.js --stats-error-details ${@}
+  esbuild \
+  out/main.js \
+  --bundle \
+  --platform=node \
+  --target=es2020,node16 \
+  --outfile=dist/bundle.js \
+  --sourcemap=inline
+  cp rester.local.yaml dist/rester.local.yaml
 else
-  webpack --config scripts/configs/webpack.prod.js --stats-error-details ${@}
+  esbuild \
+  out/main.js \
+  --bundle \
+  --platform=node \
+  --target=es2020,node16 \
+  --outfile=dist/bundle.js \
+  --minify
+fi
+
+# clean tsc output dir
+rm -rf out/
+
+# copy resources
+cp rester.yaml dist/rester.yaml
+if [ -d "src/resources/" ]; then
+  cp -r src/resources/ dist/resources/
 fi
