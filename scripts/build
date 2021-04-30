@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
+set -e
 
-tsc --outDir out/
+# build with tsc
+tsc --module es2020 --outDir out/
 
 if [ "${MODE}" = "DEV" ]; then
   esbuild \
