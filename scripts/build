@@ -2,7 +2,7 @@
 set -e
 
 # build with tsc
-tsc --outDir out/
+tsc --module es2020 --outDir out/
 
 # build with esbuild
 if [ "${MODE}" = "DEV" ]; then
