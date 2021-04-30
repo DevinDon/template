@@ -30,5 +30,5 @@ rm -rf out/
 # copy resources
 cp rester.yaml dist/rester.yaml
 if [ -d "src/resources/" ]; then
-  cp -r src/resources/ dist/resources/
+  cp -r src/resources/ dist/
 fi
