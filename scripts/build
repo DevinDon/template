@@ -11,9 +11,11 @@ if [ "${MODE}" = "DEV" ]; then
   --bundle \
   --platform=node \
   --target=es2020,node16 \
-  --outfile=dist/bundle.js \
+  --outfile=dist/bundle.dev.js \
   --sourcemap=inline
-  cp rester.local.yaml dist/rester.local.yaml
+  if [ -f "rester.local.yaml" ]; then
+    cp rester.local.yaml dist/rester.local.yaml
+  fi
 else
   esbuild \
   out/main.js \

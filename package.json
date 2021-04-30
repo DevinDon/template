@@ -37,12 +37,12 @@
   "license": "MIT",
   "private": true,
   "dependencies": {
-    "@rester/core": "0.15.21",
+    "@rester/core": "0.15.22",
     "@rester/logger": "0.2.2",
-    "@rester/orm": "0.1.9",
+    "@rester/orm": "0.1.12",
     "class-validator": "0.13.1",
-    "mongodb": "3.6.6",
-    "node-fetch": "2.6.1"
+    "node-fetch": "2.6.1",
+    "saslprep": "^1.0.3"
   },
   "devDependencies": {
     "@types/jasmine": "3.6.10",
@@ -55,7 +55,6 @@
     "eslint": "7.25.0",
     "jasmine": "3.7.0",
     "jasmine-console-reporter": "3.1.0",
-    "ts-loader": "9.1.1",
     "ts-node": "9.1.1",
     "typescript": "4.2.4"
   },
