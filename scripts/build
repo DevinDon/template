@@ -1,19 +1,23 @@
 #!/usr/bin/env bash
 
+tsc --outDir out/
+
 if [ "${MODE}" = "DEV" ]; then
   esbuild \
-  src/main.ts \
+  out/main.js \
   --bundle \
   --platform=node \
   --target=es2020,node16 \
-  --outfile=dist/bundle.js \
+  --outfile=dist/bundle.dev.js \
   --sourcemap=inline
 else
   esbuild \
-  src/main.ts \
+  out/main.js \
   --bundle \
   --platform=node \
   --target=es2020,node16 \
   --outfile=dist/bundle.js \
   --minify
 fi
+
+rm -rf out/

@@ -16,7 +16,7 @@
     "importHelpers": true,
     "incremental": true,
     "isolatedModules": true,
-    "module": "CommonJS",
+    "module": "ES2020",
     "noEmit": false,
     "outDir": "./dist",
     "removeComments": false,
