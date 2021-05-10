@@ -19,7 +19,7 @@ export class AphorismView extends BaseView {
   async create(
     @RequestBody() { author, content }: AphorismInsertParams,
   ) {
-    requiredParams(content);
+    requiredParams({ content });
     return new ExistResponse({
       statusCode: 201,
       data: await this.entity.insertOne({
@@ -43,7 +43,7 @@ export class AphorismView extends BaseView {
     @PathVariable('id') id: AphorismID,
     @RequestBody() { author, content }: AphorismUpdateParams,
   ) {
-    requiredAtLeastOneParam(author, content);
+    requiredAtLeastOneParam({ author, content });
     return new ExistResponse({
       data: await this.entity.updateOne(id, cleanify({ author, content, updateAt: new Date() })),
       message: 'Aphorism not found.',
